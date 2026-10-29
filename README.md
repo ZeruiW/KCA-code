@@ -1,8 +1,8 @@
 # KCA (Kinematic Causal Attribution) — code, results and Colab notebooks
 
 Companion code for the paper *Kinematic Causal Attribution: Black-Box Explanations of Motion versus Geometry for 4D
-Point-Cloud Video Models* (AAAI-27 Workshop on Deployable AI, DAI 2027; double-blind, so please keep this material
-private until the review is over). KCA explains a 4D point-cloud video model by intervening on its input
+Point-Cloud Video Models* (submitted to the AAAI-27 Workshop on Deployable AI, DAI 2027, which is double-blind: do not
+link this repository from the anonymous submission). KCA explains a 4D point-cloud video model by intervening on its input
 (ablate / freeze / displace) and splits each spacetime region's importance into a **motion** term and a **geometry**
 term. Backbones: P4Transformer, PSTNet, Mamba4D; dataset: MSR-Action3D.
 
