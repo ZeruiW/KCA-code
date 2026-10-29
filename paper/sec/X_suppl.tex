@@ -1,0 +1,213 @@
+\appendix
+
+\section{Notation and pseudocode}
+\label{supp:notation}
+Tab.~\ref{tab:notation} lists the notation, Tab.~\ref{tab:assump} the assumptions behind each result, and Alg.~\ref{alg:kca} the procedure.
+
+\begin{table*}[h]
+\centering\small
+\begin{tabular}{ll}
+\toprule
+$X=\{P_t\}_{t=1}^{T}$ & point-cloud video; $P_t\!\subset\!\real^3$, sampled per frame \\
+$f,\ \varphi(X){=}f(X)_c$ & model; target logit of class $c$ \\
+$\setR=\{\setR_t\}_t$ & a tracked region: its point set in each frame \\
+$c_t(\setR)$ & centroid of $\setR_t$ \\
+$\doop{\frz,\setR}$ & freeze: $\setR$ static at its $t_0$ shape ($M{=}0$, $G{=}1$) \\
+$\doop{\ablgeo,\setR}$ & shape-free proxy moving along $c_t$ ($M{=}1$, $G{=}0$) \\
+$\doop{\abl,\setR}$ & shape-free proxy static at $c_{t_0}$ ($M{=}0$, $G{=}0$) \\
+$\Nec,\ \Smot,\Sgeo,\ \Delta_{\mathrm{int}}$ & necessity; motion, geometry importance; interaction \\
+\bottomrule
+\end{tabular}
+\caption{Notation.}
+\label{tab:notation}
+\end{table*}
+
+\begin{table*}[h]
+\centering\small
+\begin{tabular}{lll}
+\toprule
+& Assumption & Needed by \\
+\midrule
+\textbf{I} & interventional validity (operators rewrite only $\setR_t$) & Props.~\ref{prop:ace},~\ref{prop:pnps},~\ref{prop:context} \\
+\textbf{S} & separability \emph{(measured by $\Delta_{\mathrm{int}}$, not assumed)} & Prop.~\ref{prop:ace} (marginal ACE only) \\
+\textbf{M} & monotonicity \& exogeneity & Prop.~\ref{prop:pnps} (identification) \\
+\bottomrule
+\end{tabular}
+\caption{Assumptions and the results that require them.}
+\label{tab:assump}
+\end{table*}
+
+\begin{algorithm}[h]
+\caption{\method: Kinematic Causal Attribution}
+\label{alg:kca}
+\begin{algorithmic}[1]
+\Require clip $X$, model $f$, class $c$, tracked regions $\{\setR^j\}_{j=1}^{m}$
+\Ensure motion field $\Smot$, geometry field $\Sgeo$, interaction $\Delta_{\mathrm{int}}$
+\State precompute for all regions: frozen sets $\setR^j_{t_0}$, proxy paths $c_t(\setR^j)$
+\If{local}
+  \State evaluate $\varphi$ at $X$ and 3 corners per region \Comment{$3m{+}1$ passes}
+  \State Eq.~\eqref{eq:sym}, Eq.~\eqref{eq:dint} per region
+\Else
+  \State evaluate $\varphi$ on $S$ random joint states \Comment{$S$ passes}
+  \State solve Eq.~\eqref{eq:context}; $\Smot{=}\mu{+}\iota/2$, $\Sgeo{=}\gamma{+}\iota/2$
+\EndIf
+\State \Return per-point fields: each point receives its region's scores
+\end{algorithmic}
+\end{algorithm}
+
+\input{sec/X_suppl_proofs}
+
+\section{Controlled experiment: ground truth by construction}
+\label{supp:controlled}
+To test the decomposition where the answer is known \emph{by construction}, every clip has three point clusters with the same layout in all classes; one ``odd'' cluster differs and the class is \emph{which} cluster is odd. In the \textbf{motion} task the odd cluster translates (all shapes identical: only motion is discriminative); in the \textbf{shape} task it is larger and nothing moves (only geometry is discriminative). An attention-based 4D classifier (per-point MLP $\to$ per-frame voxel tokens $\to$ Transformer) is trained per task and seed (3 seeds, 20 held-out clips each) and explained with tracked regions ($m{=}3$). Within the odd cluster, the motion share of \method's positive importance is \NumCtrlMot\ for the motion model and \NumCtrlShape\ for the shape model (local estimator; context: \NumCtrlMotCtx\ vs.\ \NumCtrlShapeCtx), \ie a complete double dissociation. With the earlier \emph{deletion} corner instead of the static proxy, a static region's presence leaks into $\Smot$ (Tab.~\ref{tab:controlled-abl}). On a third task whose class is the motion \emph{direction} and whose two directions share the same spatial envelope, reversing the actor's trajectory (\dsp) flips the prediction to the opposite class in \NumCtrlDspFlip\% of the clips, freezing it in \NumCtrlFrzFlip\%: \dsp\ is sign-sensitive, \frz\ is not.
+
+\begin{table}[h]
+\centering\small\tablecitesoff
+\input{tables/tab_controlled_abl}
+\caption{Controlled ablation (1 seed): the $(0,0)$ corner and the order. Motion share within the odd cluster on the motion (mot.) and shape (shape) models; the decomposition is correct iff mot.\ $\approx1$ and shape $\approx0$.}
+\label{tab:controlled-abl}
+\end{table}
+
+\section{Data, models and code behind each result}
+\label{supp:provenance}
+\paragraph{Data.} MSR-Action3D~\cite{li2010msraction3d}: raw depth maps and 20-joint skeletons from the archive distributed with MeteorNet~\cite{liu2019meteornet}, converted with MeteorNet's depth-to-point procedure (Appendix~\ref{supp:impl}). Every real-data result uses test subjects 6--10 only; models are trained on subjects 1--5. Each clip is the centred 24-frame window of a video, and its points are sampled with a fixed seed per video, so every method explains exactly the same inputs.
+
+\paragraph{Models and code.} The unmodified official repositories of P4Transformer~\cite{fan2021p4transformer} (\url{github.com/hehefan/P4Transformer}, commit \texttt{461b83e}), PSTNet~\cite{fan2021pstnet} (\url{github.com/hehefan/Point-Spatio-Temporal-Convolution}, \texttt{04f9b47}) and Mamba4D~\cite{liu2025mamba4d} (commit \texttt{8d5bbe2}). Their compiled operators are replaced as described in Appendix~\ref{supp:impl}; on CUDA the selective scan is the kernel of \texttt{mamba\_ssm} 2.3.2~\cite{gu2024mamba}. Full scale: PyTorch~\cite{paszke2019pytorch} 2.11 with CUDA 13.0 on one A100 (40\,GB). Laptop scale: PyTorch 2.14 on an Apple M4. Statistical tests use SciPy~\cite{virtanen2020scipy}.
+
+\paragraph{From records to numbers.} Every explained clip is written to a per-clip record (prediction, attribution scores, every metric). Scripts compute every table body and every measured number in the text from these records; no measured number is typed by hand. Tab.~\ref{tab:provenance} lists the record behind each result.
+
+\begin{table*}[h]
+\centering\small\tablecitesoff
+\begin{tabular}{p{0.22\textwidth} p{0.31\textwidth} p{0.14\textwidth} p{0.20\textwidth}}
+\toprule
+Result & Data & Model(s) & Record\\
+\midrule
+Tab.~\ref{tab:faithfulness}, \ref{tab:mpg} (left), \ref{tab:faith-supp}, \ref{tab:cost}, \ref{tab:per-class}; Fig.~\ref{fig:curves}, \ref{fig:teaser}, \ref{fig:qual} & all \NumPFTClips\ test clips, 2048 points per frame; ground-truth metrics on the \NumGTValid\ with a complete skeleton & P4Transformer (Fig.~\ref{fig:qual}: all three) & benchmark, \url{p4transformer/raw.jsonl}\\
+Tab.~\ref{tab:cross} & the first two test clips per action (\NumCrossClips) & all three & benchmark, one file per backbone\\
+Tab.~\ref{tab:mpg} (right), Fig.~\ref{fig:dissoc}, Appendix~\ref{supp:results} & arm-moving videos: \NumXTrain\ train, \NumXTest\ test; \NumXEval\ test clips explained per task & one task model per task and backbone & \url{crossover*/crossover.json}\\
+Tab.~\ref{tab:ablation}, Fig.~\ref{fig:sanity}; displace probe & \NumCrossClips\ clips (sanity: the first 20) & P4Transformer & \url{ablation/ablation.json}\\
+Tab.~\ref{tab:stability} & the same \NumCrossClips\ clips, \NumStabSamplings\ point samplings each & P4Transformer & \url{stability/stability.jsonl}\\
+Tab.~\ref{tab:seeds} & as the crossover, \NumXSeedsTotal\ training seeds & P4Transformer task models & \url{crossover*/crossover.json}\\
+Tab.~\ref{tab:controlled-abl}; controlled bar of Fig.~\ref{fig:dissoc} & synthetic clips, 3 seeds $\times$ 20 test clips & small attention model & \url{controlled/*.json}\\
+Tab.~\ref{tab:scale} & as above, laptop-scale models & all three & laptop-scale records\\
+\bottomrule
+\end{tabular}
+\caption{The data, models and per-clip records behind each table and figure. All real-data results use the MSR-Action3D test subjects 6--10 and, except Tab.~\ref{tab:scale}, the full-scale models.}
+\label{tab:provenance}
+\end{table*}
+
+
+\begin{table*}[h]
+\centering\small\tablecitesoff
+\begin{tabular}{l cc cc}
+\toprule
+& \multicolumn{2}{c}{one sampling} & \multicolumn{2}{c}{average of two samplings}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Method & points & body parts & points & body parts\\
+\midrule
+\tabinput{tables/tab_stability.tex}
+\bottomrule
+\end{tabular}
+\caption{\textbf{Stability under sensor re-sampling} (P4Transformer, \NumStabClips\ test clips, \NumStabSamplings\ independent point samplings each). Spearman rank correlation between the map of sampling 0 and the map of another sampling transferred onto the points of sampling 0 (nearest neighbour per frame), averaged over samplings and clips. Body parts: each map averaged over the points of each of the 19 skeleton bones (one clip without a complete skeleton is left out). Average of two samplings: maps of samplings 0 and 1 averaged and compared with the average of samplings 2 and 3. Method randomness is fixed per clip, so only the point sampling changes.}
+\label{tab:stability}
+\end{table*}
+
+\section{Two training scales}
+\label{supp:scale}
+The main text uses backbones trained at their official width with 2048 points per frame on one A100 GPU. We also trained all three at laptop scale (reduced width for P4Transformer and Mamba4D, 1024 points, an Apple M4; Appendix~\ref{supp:impl}) and ran every real-data experiment again. Tab.~\ref{tab:scale} sets the headline numbers side by side. The full-scale models are closer to their published accuracies, most of all Mamba4D. The conclusions agree, with three differences in significance. On P4Transformer, \method's deletion advantage over region occlusion is significant at laptop scale on \NumPFTClipsFive\ clips and at full scale on all \NumPFTClips\ clips ($p\NumPKcaCtxOcclDel$), but not at full scale on the same \NumPFTClipsFive\ clips ($p\NumPKcaCtxOcclDelFive$): the full test set is what makes it significant. On Mamba4D its advantage over Integrated Gradients is significant only at laptop scale. Integrated Gradients localises the moving parts better than $\Smot$ on P4Transformer at full scale, where the laptop-scale run had them tied. In the crossover the shape-task models of P4Transformer and Mamba4D draw more of the arm's importance from motion at full scale, but every motion--shape gap still excludes zero.
+
+\begin{table*}[h]
+\centering\small\tablecitesoff
+\begin{tabular}{l cc}
+\toprule
+Quantity & laptop & full scale\\
+\midrule
+\tabinput{tables/tab_scale.tex}
+\bottomrule
+\end{tabular}
+\caption{Headline numbers at the two training scales (laptop: \NumPFTClipsFive\ P4Transformer clips; full scale: all \NumPFTClips; the other rows use the same clips at both scales. Del.: deletion AUC; crossover: motion share of the arm's importance; randomised model: rank correlation with the trained model's map once every block is re-initialised).}
+\label{tab:scale}
+\end{table*}
+
+\section{Additional real-data results}
+\label{supp:results}
+\paragraph{Crossover design.} We explain, in each task, the class whose defining property is \emph{present} in the clip and removable by the interventions: the original class on original clips in the motion task (its normal-speed motion is removed by \frz) and the thick class on thickened clips in the shape task (its shape is removed by the proxy). We report the variants we tried on the way. Explaining the \emph{original} class in the shape task---whose evidence is then the \emph{absence} of the cue---gave shares that depend on the sign convention (positive parts \NumXThickShare, signed sums \NumXThickShareSigned): freezing a normally shaped arm moves that logit strongly in both directions from clip to clip. Thinning the arm instead of thickening it was not learnable by P4Transformer (test accuracy \NumXThinAcc\%, i.e.\ chance), so that variant gives no information. With the final design both conventions agree (motion task: \NumXMotShare\ positive / \NumXMotShareSigned\ signed; shape task: \NumXGeoShare\ / \NumXGeoShareSigned). 95\% bootstrap intervals over clips (positive parts, local estimator): motion task [\NumXMotLo, \NumXMotHi], shape task [\NumXGeoLo, \NumXGeoHi], gap [\NumXGapLo, \NumXGapHi]. We retrained both task models with further seeds (Tab.~\ref{tab:seeds}). At full scale the motion-task model often fails to leave chance: it trains in \NumXSeedsTrained\ of \NumXSeedsTotal\ seeds, and the shares of a model at chance carry no information, so we do not use them. In all \NumXSeedsSameDir\ seeds whose models trained, the arm's motion share is higher in the motion task; the interval of the gap excludes zero in \NumXSeedsCIExcl\ of them, and the smallest gap (seed 3) comes with the weakest shape model. Three of the crossover videos (one training, two test, none of them among the explained clips) have frames without a skeleton; their arm masks are wrong in those frames, and we keep them.
+
+\begin{table*}[h]
+\centering\small\tablecitesoff
+\begin{tabular}{l ccc}
+\toprule
+Seed & acc.\ \% (mot.\ / shape) & share (mot.\ / shape) & gap 95\% CI\\
+\midrule
+\tabinput{tables/tab_seeds.tex}
+\bottomrule
+\end{tabular}
+\caption{P4Transformer crossover over training seeds (local estimator, \NumXEval\ explained test clips per task). A seed counts only if both task models leave chance (accuracy $\geq 60\%$ on the balanced binary test set); seed 0 is the one reported in the main text.}
+\label{tab:seeds}
+\end{table*}
+ \emph{PSTNet} (same tasks and recipe): \NumXPstMotShare\ [\NumXPstMotLo, \NumXPstMotHi] and \NumXPstGeoShare\ [\NumXPstGeoLo, \NumXPstGeoHi] (context estimator \NumXPstMotShareCtx\ / \NumXPstGeoShareCtx; motion prior on the arm \NumXPstMotPriorEBPG\ / \NumXPstGeoPriorEBPG\ EBPG in both tasks); the signed shares (\NumXPstMotShareSigned, \NumXPstGeoShareSigned) agree in direction and fall just outside $[0,1]$ because the other term's sum over the arm is slightly negative. \emph{Mamba4D}: \NumXMbaMotShare\ [\NumXMbaMotLo, \NumXMbaMotHi] and \NumXMbaGeoShare\ [\NumXMbaGeoLo, \NumXMbaGeoHi] (context \NumXMbaMotShareCtx\ / \NumXMbaGeoShareCtx; signed \NumXMbaMotShareSigned\ / \NumXMbaGeoShareSigned).
+\begin{table*}[h]
+\centering\small\tablecitesoff
+\begin{tabular}{l cccccc}
+\toprule
+Variant & Del.$\downarrow$ & $\Smot$ EBPG$\uparrow$ & mot.\ share & $\tfrac{|\Delta_{\mathrm{int}}|}{|\Nec|}$ & passes & s\\
+\midrule
+\tabinput{tables/tab_ablation.tex}
+\bottomrule
+\end{tabular}
+\caption{\textbf{Ablation and cost} (P4Transformer, 40 clips). EBPG and motion share on the moving ground truth; $|\Delta_{\mathrm{int}}|/|\Nec|$: mean interaction relative to necessity; forward passes and seconds per clip on one A100 GPU.}
+\label{tab:ablation}
+\end{table*}
+
+\begin{table*}[h]
+\centering\small\tablecitesoff
+\begin{tabular}{l ccccc}
+\toprule
+Method & Del.$\downarrow$ & Comp.$\uparrow$ & Ins.$\uparrow^\dagger$ & Suff.$\downarrow^\dagger$ & Sens-$n\uparrow$\\
+\midrule
+\tabinput{tables/tab_faithfulness_supp.tex}
+\bottomrule
+\end{tabular}
+\caption{Full faithfulness table on P4Transformer, including Sensitivity-$n$ (Pearson correlation between summed attribution and output drop over random 10\% subsets; near zero for all methods, because random subsets barely change the output).}
+\label{tab:faith-supp}
+\end{table*}
+
+\begin{table}[h]
+\centering\small\tablecitesoff
+\begin{tabular}{l c}
+\toprule
+Method & s / clip\\
+\midrule
+\tabinput{tables/tab_cost.tex}
+\bottomrule
+\end{tabular}
+\caption{Explanation cost per clip on one A100 GPU (P4Transformer, 24 frames $\times$ 2048 points; seconds, excluding metric evaluation).}
+\label{tab:cost}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\linewidth]{fig/sanity.pdf}
+\caption{Cascading model randomisation~\cite{adebayo2018sanity} of P4Transformer, from the classification head down: rank correlation of the attribution map with the trained model's.}
+\label{fig:sanity}
+\end{figure}
+
+\begin{figure*}[p]
+\centering
+\includegraphics[width=\textwidth,height=0.92\textheight,keepaspectratio]{fig/msr_qual.pdf}
+\caption{$\Smot$ (red) and $\Sgeo$ (blue) on real MSR-Action3D test clips at three instants; rows: three actions (\emph{draw circle}, \emph{high arm wave}, \emph{forward kick}) $\times$ the three backbones, same code.}
+\label{fig:qual}
+\end{figure*}
+
+\begin{table}[h]
+\centering\small\tablecitesoff\setlength{\tabcolsep}{3pt}
+\begin{tabular}{l cccc}
+\toprule
+Action & mot.\ share & Del.\ \method & Del.\ occl. & acc.\,\%\\
+\midrule
+\tabinput{tables/tab_per_class.tex}
+\bottomrule
+\end{tabular}
+\caption{Per action (P4Transformer, all test clips of each action): motion share $\Smot^+/(\Smot^++\Sgeo^+)$ of \method\ (context) over the whole body, deletion AUC of \method\ (context) and of region occlusion, and the model's accuracy on these clips.}
+\label{tab:per-class}
+\end{table}

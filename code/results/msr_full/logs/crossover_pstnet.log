@@ -1,0 +1,6 @@
+arm-moving clips: train 163 test 200
+[kca.cuda_fast] fps: on (picks equal to the loop's: 100.00%) | scan: on
+[motion] trained: test acc 0.805 (213s)
+[motion] acc 0.805 | KCA arm motion share 0.855 (ctx 0.880) | motion-prior EBPG(arm) 0.28
+[geometry] trained: test acc 0.902 (223s)
+[geometry] acc 0.902 | KCA arm motion share 0.300 (ctx 0.258) | motion-prior EBPG(arm) 0.28

@@ -1,0 +1,10 @@
+{
+  "_comment": "Legacy cvpr_benchmark config (real-data numbers come from kca.run.msr_benchmark; see SETUP.md). Checkpoints from kca.run.train_official or the official train-msr.py; repo = path of the cloned official repo (default ~/kca_work/ext/<repo>).",
+  "tab1": {"backbone": "p4transformer", "checkpoint": "~/kca_work/ckpt/p4t/last.pth", "dataset": "msr", "data_root": "~/kca_work/data/msr", "split": "test", "frames": 24, "points": 1024, "regions": 12},
+  "tab2": [
+    {"backbone": "pstnet", "checkpoint": "~/kca_work/ckpt/pstnet/last.pth", "dataset": "msr", "data_root": "~/kca_work/data/msr", "split": "test", "frames": 24, "points": 1024, "regions": 12},
+    {"backbone": "p4transformer", "checkpoint": "~/kca_work/ckpt/p4t/last.pth", "dataset": "msr", "data_root": "~/kca_work/data/msr", "split": "test", "frames": 24, "points": 1024, "regions": 12},
+    {"backbone": "mamba4d", "checkpoint": "~/kca_work/ckpt/mamba4d/last.pth", "dataset": "msr", "data_root": "~/kca_work/data/msr", "split": "test", "frames": 24, "points": 1024, "regions": 12}
+  ],
+  "tab4": {"backbone": "p4transformer", "checkpoint": "~/kca_work/ckpt/p4t/last.pth", "dataset": "msr", "data_root": "~/kca_work/data/msr", "split": "test", "frames": 24, "points": 1024, "regions": 12}
+}

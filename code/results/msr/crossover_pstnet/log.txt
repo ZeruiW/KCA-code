@@ -1,0 +1,9 @@
+motion eval start 20:44
+arm-moving clips: train 163 test 200
+[motion] acc 0.795 | KCA arm motion share 0.847 (ctx 0.866) | motion-prior EBPG(arm) 0.23
+motion eval exit 0 21:27
+geometry eval start 21:33
+arm-moving clips: train 163 test 200
+[geometry] acc 0.907 | KCA arm motion share 0.234 (ctx 0.239) | motion-prior EBPG(arm) 0.23
+geometry eval exit 0 22:13
+XOVER_DONE

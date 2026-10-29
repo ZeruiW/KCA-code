@@ -1,0 +1,8 @@
+arm-moving clips: train 163 test 200
+[kca.cuda_fast] fps: on (picks equal to the loop's: 100.00%) | scan: on
+/usr/local/lib/python3.13/dist-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[motion] trained: test acc 0.775 (1433s)
+[motion] acc 0.775 | KCA arm motion share 0.920 (ctx 0.901) | motion-prior EBPG(arm) 0.28
+[geometry] trained: test acc 0.892 (1494s)
+[geometry] acc 0.892 | KCA arm motion share 0.606 (ctx 0.578) | motion-prior EBPG(arm) 0.28

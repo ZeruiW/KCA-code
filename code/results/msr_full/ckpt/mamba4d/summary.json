@@ -1,0 +1,36 @@
+{
+  "backbone": "mamba4d",
+  "last_acc": 0.8815331010452961,
+  "best_acc": 0.89198606271777,
+  "params_M": 109.805716,
+  "cfg": {},
+  "preproc": {
+    "center": true
+  },
+  "args": {
+    "backbone": "mamba4d",
+    "data": "/content/kca/data/msr",
+    "out": "/content/drive/MyDrive/kca_full/ckpt/mamba4d",
+    "repo": null,
+    "scale": "official",
+    "frames": 24,
+    "points": 2048,
+    "epochs": 50,
+    "bs": 16,
+    "opt": "adamw",
+    "lr": 0.0003,
+    "wd": 0.05,
+    "warmup": 5,
+    "milestones": [
+      0.6,
+      0.85
+    ],
+    "center": 1,
+    "t_init_scale": 0.08333333333333333,
+    "clips_per_video": 17,
+    "eval_every": 5,
+    "device": "cuda",
+    "seed": 0,
+    "resume": true
+  }
+}

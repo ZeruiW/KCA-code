@@ -1,0 +1,474 @@
+% ===================================================================
+%  KCA (4D-XAI) — bibliography
+%  All cited recent entries were checked against arXiv / CVF / publisher
+%  pages on 2026-09-26 (venues updated where preprints were published).
+% ===================================================================
+
+% ---------- Transformers / video & 4D backbones ----------
+@inproceedings{vaswani2017attention,
+  title={Attention is all you need},
+  author={Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N and Kaiser, Lukasz and Polosukhin, Illia},
+  booktitle={NeurIPS}, year={2017}}
+
+@inproceedings{dosovitskiy2021vit,
+  title={An image is worth 16x16 words: Transformers for image recognition at scale},
+  author={Dosovitskiy, Alexey and Beyer, Lucas and Kolesnikov, Alexander and Weissenborn, Dirk and Zhai, Xiaohua and Unterthiner, Thomas and Dehghani, Mostafa and Minderer, Matthias and Heigold, Georg and Gelly, Sylvain and Uszkoreit, Jakob and Houlsby, Neil},
+  booktitle={ICLR}, year={2021}}
+
+@inproceedings{bertasius2021timesformer,
+  title={Is space-time attention all you need for video understanding?},
+  author={Bertasius, Gedas and Wang, Heng and Torresani, Lorenzo},
+  booktitle={ICML}, year={2021}}
+
+@inproceedings{tong2022videomae,
+  title={{VideoMAE}: Masked autoencoders are data-efficient learners for self-supervised video pre-training},
+  author={Tong, Zhan and Song, Yibing and Wang, Jue and Wang, Limin},
+  booktitle={NeurIPS}, year={2022}}
+
+@inproceedings{arnab2021vivit,
+  title={{ViViT}: A video vision transformer},
+  author={Arnab, Anurag and Dehghani, Mostafa and Heigold, Georg and Sun, Chen and Lu{\v{c}}i{\'c}, Mario and Schmid, Cordelia},
+  booktitle={ICCV}, year={2021}}
+
+@inproceedings{fan2021p4transformer,
+  title={Point 4D transformer networks for spatio-temporal modeling in point cloud videos},
+  author={Fan, Hehe and Yang, Yi and Kankanhalli, Mohan},
+  booktitle={CVPR}, year={2021}}
+
+@inproceedings{fan2021pstnet,
+  title={{PSTNet}: Point spatio-temporal convolution on point cloud sequences},
+  author={Fan, Hehe and Yang, Yi and Kankanhalli, Mohan},
+  booktitle={ICLR}, year={2021}}
+
+@inproceedings{liu2025mamba4d,
+  title={{Mamba4D}: Efficient 4D point cloud video understanding with disentangled spatial-temporal state space models},
+  author={Liu, Jiuming and Han, Jinru and Liu, Lihao and Aviles-Rivero, Angelica I and Jiang, Chaokang and Liu, Zhe and Wang, Hesheng},
+  booktitle={CVPR}, year={2025}, note={arXiv:2405.14338}}
+
+@inproceedings{wu2024ptv3,
+  title={Point transformer {V3}: Simpler, faster, stronger},
+  author={Wu, Xiaoyang and Jiang, Li and Wang, Peng-Shuai and Liu, Zhijian and Liu, Xihui and Qiao, Yu and Ouyang, Wanli and He, Tong and Zhao, Hengshuang},
+  booktitle={CVPR}, year={2024}}
+
+@inproceedings{liu2019meteornet,
+  title={{MeteorNet}: Deep learning on dynamic 3D point cloud sequences},
+  author={Liu, Xingyu and Yan, Mengyuan and Bohg, Jeannette},
+  booktitle={ICCV}, year={2019}}
+
+@article{fan2023psttransformer,
+  title={Point spatio-temporal transformer networks for point cloud video modeling},
+  author={Fan, Hehe and Yang, Yi and Kankanhalli, Mohan},
+  journal={IEEE TPAMI}, year={2023}}
+
+@inproceedings{wen2022pptr,
+  title={Point primitive transformer for long-term 4D point cloud video understanding},
+  author={Wen, Hao and Liu, Yunze and Huang, Jingwei and Duan, Bo and Yi, Li},
+  booktitle={ECCV}, year={2022}}
+
+@inproceedings{benshabat2024_3dinaction,
+  title={{3DInAction}: Understanding human actions in 3D point clouds},
+  author={Ben-Shabat, Yizhak and Shrout, Oren and Gould, Stephen},
+  booktitle={CVPR}, pages={19978--19987}, year={2024}}
+
+@inproceedings{min2020pointlstm,
+  title={An efficient {PointLSTM} for point clouds based gesture recognition},
+  author={Min, Yuecong and Zhang, Yanxiao and Chai, Xiujuan and Chen, Xilin},
+  booktitle={CVPR}, year={2020}}
+
+@inproceedings{qi2017pointnet,
+  title={{PointNet}: Deep learning on point sets for 3D classification and segmentation},
+  author={Qi, Charles R and Su, Hao and Mo, Kaichun and Guibas, Leonidas J},
+  booktitle={CVPR}, year={2017}}
+
+@inproceedings{qi2017pointnetpp,
+  title={{PointNet++}: Deep hierarchical feature learning on point sets in a metric space},
+  author={Qi, Charles R and Yi, Li and Su, Hao and Guibas, Leonidas J},
+  booktitle={NeurIPS}, year={2017}}
+
+@article{wang2019dgcnn,
+  title={Dynamic graph {CNN} for learning on point clouds},
+  author={Wang, Yue and Sun, Yongbin and Liu, Ziwei and Sarma, Sanjay E and Bronstein, Michael M and Solomon, Justin M},
+  journal={ACM Transactions on Graphics (TOG)}, year={2019}}
+
+% ---------- XAI: attribution / interpretability (image & video) ----------
+@inproceedings{ribeiro2016lime,
+  title={``Why should I trust you?'': Explaining the predictions of any classifier},
+  author={Ribeiro, Marco Tulio and Singh, Sameer and Guestrin, Carlos},
+  booktitle={KDD}, year={2016}}
+
+@inproceedings{lundberg2017shap,
+  title={A unified approach to interpreting model predictions},
+  author={Lundberg, Scott M and Lee, Su-In},
+  booktitle={NeurIPS}, year={2017}}
+
+@inproceedings{selvaraju2017gradcam,
+  title={{Grad-CAM}: Visual explanations from deep networks via gradient-based localization},
+  author={Selvaraju, Ramprasaath R and Cogswell, Michael and Das, Abhishek and Vedantam, Ramakrishna and Parikh, Devi and Batra, Dhruv},
+  booktitle={ICCV}, year={2017}}
+
+@inproceedings{sundararajan2017ig,
+  title={Axiomatic attribution for deep networks},
+  author={Sundararajan, Mukund and Taly, Ankur and Yan, Qiqi},
+  booktitle={ICML}, year={2017}}
+
+@inproceedings{abnar2020rollout,
+  title={Quantifying attention flow in transformers},
+  author={Abnar, Samira and Zuidema, Willem},
+  booktitle={ACL}, year={2020}}
+
+@inproceedings{chefer2021transformer,
+  title={Transformer interpretability beyond attention visualization},
+  author={Chefer, Hila and Gur, Shir and Wolf, Lior},
+  booktitle={CVPR}, year={2021}}
+
+@inproceedings{fong2019extremal,
+  title={Understanding deep networks via extremal perturbations and smooth masks},
+  author={Fong, Ruth and Patrick, Mandela and Vedaldi, Andrea},
+  booktitle={ICCV}, year={2019}}
+
+@book{pearl2009causality,
+  title={Causality: Models, Reasoning, and Inference},
+  author={Pearl, Judea}, edition={2}, publisher={Cambridge University Press}, year={2009}}
+
+@inproceedings{janzing2020feature,
+  title={Feature relevance quantification in explainable {AI}: A causal problem},
+  author={Janzing, Dominik and Minorics, Lenon and Bl{\"o}baum, Patrick},
+  booktitle={AISTATS}, year={2020}}
+
+@inproceedings{hooker2019roar,
+  title={A benchmark for interpretability methods in deep neural networks},
+  author={Hooker, Sara and Erhan, Dumitru and Kindermans, Pieter-Jan and Kim, Been},
+  booktitle={NeurIPS}, year={2019}}
+
+@inproceedings{ancona2018sensitivity,
+  title={Towards better understanding of gradient-based attribution methods for deep neural networks},
+  author={Ancona, Marco and Ceolini, Enea and {\"O}ztireli, Cengiz and Gross, Markus},
+  booktitle={ICLR}, year={2018}}
+
+@inproceedings{yeh2019infidelity,
+  title={On the (in)fidelity and sensitivity of explanations},
+  author={Yeh, Chih-Kuan and Hsieh, Cheng-Yu and Suggala, Arun and Inouye, David I and Ravikumar, Pradeep K},
+  booktitle={NeurIPS}, year={2019}}
+
+@article{zhang2018pointing,
+  title={Top-down neural attention by excitation backprop},
+  author={Zhang, Jianming and Bargal, Sarah Adel and Lin, Zhe and Brandt, Jonathan and Shen, Xiaohui and Sclaroff, Stan},
+  journal={International Journal of Computer Vision (IJCV)}, year={2018}}
+
+@inproceedings{deyoung2020eraser,
+  title={{ERASER}: A benchmark to evaluate rationalized {NLP} models},
+  author={DeYoung, Jay and Jain, Sarthak and Rajani, Nazneen Fatema and Lehman, Eric and Xiong, Caiming and Socher, Richard and Wallace, Byron C},
+  booktitle={ACL}, year={2020}}
+
+@inproceedings{wang2020scorecam,
+  title={{Score-CAM}: Score-weighted visual explanations for convolutional neural networks},
+  author={Wang, Haofan and Wang, Zifan and Du, Mengnan and Yang, Fan and Zhang, Zijian and Ding, Sirui and Mardziel, Piotr and Hu, Xia},
+  booktitle={CVPR Workshops}, year={2020}}
+
+@article{smilkov2017smoothgrad,
+  title={{SmoothGrad}: removing noise by adding noise},
+  author={Smilkov, Daniel and Thorat, Nikhil and Kim, Been and Vi{\'e}gas, Fernanda and Wattenberg, Martin},
+  journal={arXiv preprint arXiv:1706.03825}, year={2017}}
+
+@inproceedings{adebayo2018sanity,
+  title={Sanity checks for saliency maps},
+  author={Adebayo, Julius and Gilmer, Justin and Muelly, Michael and Goodfellow, Ian and Hardt, Moritz and Kim, Been},
+  booktitle={NeurIPS}, year={2018}}
+
+@inproceedings{petsiuk2018rise,
+  title={{RISE}: Randomized input sampling for explanation of black-box models},
+  author={Petsiuk, Vitali and Das, Abir and Saenko, Kate},
+  booktitle={BMVC}, year={2018}}
+
+@inproceedings{jain2019attention,
+  title={Attention is not explanation},
+  author={Jain, Sarthak and Wallace, Byron C},
+  booktitle={NAACL}, year={2019}}
+
+@article{wang2025staa,
+  title={{STAA}: Spatio-temporal attention attribution for real-time interpreting transformer-based {AI} video models},
+  author={Wang, Zerui and Liu, Yan},
+  journal={IEEE Access}, volume={13}, pages={101647--101661}, year={2025}}
+
+@article{knab2025motif,
+  title={Concepts in motion: Temporal concept bottleneck model for interpretable video classification},
+  author={Knab, Patrick and Marton, Sascha and Schubert, Philipp J and Guggiana, Drago and Bartelt, Christian},
+  journal={arXiv preprint arXiv:2509.20899}, year={2025}}
+
+@inproceedings{lee2025dance,
+  title={Disentangled concepts speak louder than words: Explainable video action recognition},
+  author={Lee, Jongseo and Lee, Wooil and Park, Gyeong-Moon and Kim, Seong Tae and Choi, Jinwoo},
+  booktitle={NeurIPS}, year={2025}}
+
+@inproceedings{videotcav2024,
+  title={Exploring explainability in video action recognition},
+  author={Saha, Avinab and Gupta, Shashank and Ankireddy, Sravan Kumar and Chahine, Karl and Ghosh, Joydeep},
+  booktitle={CVPR Workshops}, pages={8176--8181}, year={2024}}
+
+% ---------- 3D point-cloud XAI (static; differentiation target) ----------
+@inproceedings{zheng2019pointcloudsaliency,
+  title={{PointCloud} saliency maps},
+  author={Zheng, Tianhang and Chen, Changyou and Yuan, Junsong and Li, Bo and Ren, Kui},
+  booktitle={ICCV}, year={2019}}
+
+@inproceedings{tayyub2022ape,
+  title={Explaining deep neural networks for point clouds using gradient-based visualizations},
+  author={Tayyub, Jawad and Sarmad, Muhammad and Sch{\"o}nborn, Nicolas},
+  booktitle={ACCV}, year={2022}}
+
+@inproceedings{schinagl2022occam,
+  title={{OccAM's Laser}: Occlusion-based attribution maps for 3D object detectors on {LiDAR} data},
+  author={Schinagl, David and Krispel, Georg and Possegger, Horst and Roth, Peter M and Bischof, Horst},
+  booktitle={CVPR}, year={2022}}
+
+@article{chakraborty2026benchmark,
+  title={A cross-domain benchmark of intrinsic and post hoc explainability for {3D} deep learning models},
+  author={Chakraborty, Asmita and Karagoz, Gizem and Meratnia, Nirvana},
+  journal={Journal of Imaging}, volume={12}, number={2}, pages={63}, year={2026}}
+
+@inproceedings{devries2025pointmil,
+  title={Interpretable point cloud classification using multiple instance learning},
+  author={De Vries, Matt and Naidoo, Reed and Fourkioti, Olga and Dent, Lucas G and Curry, Nathan and Dunsby, Chris and Bakal, Chris},
+  booktitle={ICCV}, pages={22209--22220}, year={2025}}
+
+@inproceedings{wu2026motive,
+  title={Motion attribution for video generation},
+  author={Wu, Xindi and Paschalidou, Despoina and Gao, Jun and Torralba, Antonio and Leal-Taix{\'e}, Laura and Russakovsky, Olga and Fidler, Sanja and Lorraine, Jonathan},
+  booktitle={ICML}, year={2026}}
+
+@article{wang2026mosaic,
+  title={Motion-saliency complementary masked modeling for point cloud video understanding},
+  author={Wang, Wei and Sun, Yiding and Wang, Yuyan and Zhang, Zhuoyue and Li, Zhengqiao and Yin, Dongfu and Li, Chen},
+  journal={arXiv preprint arXiv:2608.30279}, year={2026}}
+
+@article{banzhaf1965,
+  title={Weighted voting doesn't work: A mathematical analysis},
+  author={Banzhaf III, John F},
+  journal={Rutgers Law Review}, volume={19}, pages={317--343}, year={1965}}
+
+@article{grabisch1999interaction,
+  title={An axiomatic approach to the concept of interaction among players in cooperative games},
+  author={Grabisch, Michel and Roubens, Marc},
+  journal={International Journal of Game Theory}, volume={28}, number={4}, pages={547--565}, year={1999}}
+
+% ---------- Causal / counterfactual attribution ----------
+@inproceedings{watson2021lens,
+  title={Local explanations via necessity and sufficiency: Unifying theory and practice},
+  author={Watson, David S and Gultchin, Limor and Taly, Ankur and Floridi, Luciano},
+  booktitle={UAI}, year={2021}}
+
+@inproceedings{price2020playfair,
+  title={Play fair: Frame contributions in video models},
+  author={Price, Will and Damen, Dima},
+  booktitle={ACCV}, year={2020}}
+
+@article{ldvice2025,
+  title={{LD-ViCE}: Latent diffusion model for video counterfactual explanations},
+  author={Varshney, Payal and Lucieri, Adriano and Balada, Christoph and Ahmed, Sheraz and Dengel, Andreas},
+  journal={arXiv preprint arXiv:2509.08422}, year={2025}}
+
+@article{goyal2019cace,
+  title={Explaining classifiers with causal concept effect ({CaCE})},
+  author={Goyal, Yash and Feder, Amir and Shalit, Uri and Kim, Been},
+  journal={arXiv preprint arXiv:1907.07165}, year={2019}}
+
+% ---------- Dynamic-3D representations & their (non-XAI) interpretability ----------
+@inproceedings{pumarola2021dnerf,
+  title={{D-NeRF}: Neural radiance fields for dynamic scenes},
+  author={Pumarola, Albert and Corona, Enric and Pons-Moll, Gerard and Moreno-Noguer, Francesc},
+  booktitle={CVPR}, year={2021}}
+
+@inproceedings{wu20244dgs,
+  title={4D Gaussian splatting for real-time dynamic scene rendering},
+  author={Wu, Guanjun and Yi, Taoran and Fang, Jiemin and Xie, Lingxi and Zhang, Xiaopeng and Wei, Wei and Liu, Wenyu and Tian, Qi and Wang, Xinggang},
+  booktitle={CVPR}, year={2024}}
+
+@article{fiebelman2025_4legs,
+  title={{4-LEGS}: 4D language embedded Gaussian splatting},
+  author={Fiebelman, Gal and Cohen, Tamir and Morgenstern, Ayellet and Hedman, Peter and Averbuch-Elor, Hadar},
+  journal={Computer Graphics Forum}, volume={44}, number={2}, pages={e70085}, year={2025}}
+
+@inproceedings{li2025_4dlangsplat,
+  title={{4D LangSplat}: 4D language Gaussian splatting via multimodal large language models},
+  author={Li, Wanhua and Zhou, Renping and Zhou, Jiawei and Song, Yingwei and Herter, Johannes and Qin, Minghan and Huang, Gao and Pfister, Hanspeter},
+  booktitle={CVPR}, year={2025}, note={arXiv:2503.10437}}
+
+@inproceedings{kwon2025instruct4dgs,
+  title={Efficient dynamic scene editing via 4D Gaussian-based static-dynamic separation},
+  author={Kwon, Joohyun and Cho, Hanbyel and Kim, Junmo},
+  booktitle={CVPR}, year={2025}, note={arXiv:2502.02091}}
+
+@inproceedings{zhang2024lp3dgs,
+  title={{LP-3DGS}: Learning to prune 3D Gaussian splatting},
+  author={Zhang, Zhaoliang and Song, Tianchen and Lee, Yongjae and Yang, Li and Peng, Cheng and Chellappa, Rama and Fan, Deliang},
+  booktitle={NeurIPS}, year={2024}, note={arXiv:2405.18784}}
+
+@article{galus2026xsplain,
+  title={{XSPLAIN}: {XAI}-enabling splat-based prototype learning for attribute-aware interpretability},
+  author={Galus, Dominik and Farganus, Julia and Zapala, Tymoteusz and Czachorowski, Miko{\l}aj and Borycki, Piotr and Spurek, Przemys{\l}aw and Syga, Piotr},
+  journal={arXiv preprint arXiv:2602.10239}, year={2026}}
+
+% ---------- 4D occupancy (related work / Paper-2 motivation) ----------
+@inproceedings{tian2023occ3d,
+  title={{Occ3D}: A large-scale 3D occupancy prediction benchmark for autonomous driving},
+  author={Tian, Xiaoyu and Jiang, Tao and Yun, Longfei and Mao, Yucheng and Yang, Huitong and Wang, Yue and Wang, Yilun and Zhao, Hang},
+  booktitle={NeurIPS}, year={2023}}
+
+@inproceedings{ma2024cam4docc,
+  title={{Cam4DOcc}: Benchmark for camera-only 4D occupancy forecasting in autonomous driving applications},
+  author={Ma, Junyi and Chen, Xieyuanli and Huang, Jiawei and Xu, Jingyi and Luo, Zhen and Xu, Jintao and Gu, Weihao and Ai, Rui and Wang, Hesheng},
+  booktitle={CVPR}, pages={21486--21495}, year={2024}}
+
+@inproceedings{reliocc2025,
+  title={Reliable and calibrated semantic occupancy prediction by hybrid uncertainty learning},
+  author={Wang, Song and Wang, Zhongdao and Yu, Jiawei and Li, Wentong and Feng, Bailan and Chen, Junbo and Zhu, Jianke},
+  booktitle={IJCAI}, pages={1973--1981}, year={2025}}
+
+@inproceedings{kalble2025evocc,
+  title={{EvOcc}: Accurate semantic occupancy for automated driving using evidence theory},
+  author={K{\"a}lble, Jonas and Wirges, Sascha and Tatarchenko, Maxim and Ilg, Eddy},
+  booktitle={CVPR}, year={2025}}
+
+@inproceedings{occuq2025,
+  title={{OCCUQ}: Exploring efficient uncertainty quantification for 3D occupancy prediction},
+  author={Heidrich, Severin and Beemelmanns, Till and Nekrasov, Alexey and Leibe, Bastian and Eckstein, Lutz},
+  booktitle={ICRA}, year={2025}, note={arXiv:2503.10605}}
+
+% ---------- Datasets ----------
+@inproceedings{li2010msraction3d,
+  title={Action recognition based on a bag of 3D points},
+  author={Li, Wanqing and Zhang, Zhengyou and Liu, Zicheng},
+  booktitle={CVPR Workshops}, year={2010}}
+
+@inproceedings{shahroudy2016ntu,
+  title={{NTU RGB+D}: A large scale dataset for 3D human activity analysis},
+  author={Shahroudy, Amir and Liu, Jun and Ng, Tian-Tsong and Wang, Gang},
+  booktitle={CVPR}, year={2016}}
+
+@article{liu2020ntu120,
+  title={{NTU RGB+D 120}: A large-scale benchmark for 3D human activity understanding},
+  author={Liu, Jun and Shahroudy, Amir and Perez, Mauricio and Wang, Gang and Duan, Ling-Yu and Kot, Alex C},
+  journal={IEEE TPAMI}, year={2020}}
+
+@inproceedings{liu2022hoi4d,
+  title={{HOI4D}: A 4D egocentric dataset for category-level human-object interaction},
+  author={Liu, Yunze and Liu, Yun and Jiang, Che and Lyu, Kangbo and Wan, Weikang and Shen, Hao and Liang, Boqiang and Fu, Zhoujie and Wang, He and Yi, Li},
+  booktitle={CVPR}, year={2022}}
+
+@inproceedings{ros2016synthia,
+  title={The {SYNTHIA} dataset: A large collection of synthetic images for semantic segmentation of urban scenes},
+  author={Ros, German and Sellart, Laura and Materzynska, Joanna and Vazquez, David and Lopez, Antonio M},
+  booktitle={CVPR}, year={2016}}
+
+@article{ionescu2014human36m,
+  title={{Human3.6M}: Large scale datasets and predictive methods for 3D human sensing in natural environments},
+  author={Ionescu, Catalin and Papava, Dragos and Olaru, Vlad and Sminchisescu, Cristian},
+  journal={IEEE TPAMI}, year={2014}}
+
+@inproceedings{mahmood2019amass,
+  title={{AMASS}: Archive of motion capture as surface shapes},
+  author={Mahmood, Naureen and Ghorbani, Nima and Troje, Nikolaus F and Pons-Moll, Gerard and Black, Michael J},
+  booktitle={ICCV}, year={2019}}
+
+@article{kay2017kinetics,
+  title={The kinetics human action video dataset},
+  author={Kay, Will and Carreira, Joao and Simonyan, Karen and Zhang, Brian and Hillier, Chloe and Vijayanarasimhan, Sudheendra and Viola, Fabio and Green, Tim and Back, Trevor and Natsev, Paul and others},
+  journal={arXiv preprint arXiv:1705.06950}, year={2017}}
+
+@inproceedings{goyal2017something,
+  title={The ``something something'' video database for learning and evaluating visual common sense},
+  author={Goyal, Raghav and Kahou, Samira Ebrahimi and Michalski, Vincent and Materzynska, Joanna and Westphal, Susanne and Kim, Heuna and Haenel, Valentin and Fruend, Ingo and Yianilos, Peter and Mueller-Freitag, Moritz and others},
+  booktitle={ICCV}, year={2017}}
+
+% ---------- Adversarial ----------
+@inproceedings{goodfellow2015fgsm,
+  title={Explaining and harnessing adversarial examples},
+  author={Goodfellow, Ian J and Shlens, Jonathon and Szegedy, Christian},
+  booktitle={ICLR}, year={2015}}
+
+@inproceedings{madry2018pgd,
+  title={Towards deep learning models resistant to adversarial attacks},
+  author={Madry, Aleksander and Makelov, Aleksandar and Schmidt, Ludwig and Tsipras, Dimitris and Vladu, Adrian},
+  booktitle={ICLR}, year={2018}}
+
+@inproceedings{tan2023onepoint,
+  title={Explainability-aware one point attack for point cloud neural networks},
+  author={Tan, Hanxiao and Kotthaus, Helena},
+  booktitle={WACV}, year={2023}}
+
+@inproceedings{li2021foolinglidar,
+  title={Fooling {LiDAR} perception via adversarial trajectory perturbation},
+  author={Li, Yiming and Wen, Congcong and Juefei-Xu, Felix and Feng, Chen},
+  booktitle={ICCV}, year={2021}}
+
+@inproceedings{li2023staticbias,
+  title={Mitigating and Evaluating Static Bias of Action Representations in the Background and the Foreground},
+  author={Li, Haoxin and Liu, Yuan and Zhang, Hanwang and Li, Boyang},
+  booktitle={ICCV},
+  pages={19911--19923},
+  year={2023}
+}
+
+@inproceedings{paszke2019pytorch,
+  title={{PyTorch}: An Imperative Style, High-Performance Deep Learning Library},
+  author={Paszke, Adam and Gross, Sam and Massa, Francisco and Lerer, Adam and Bradbury, James and Chanan, Gregory and Killeen, Trevor and Lin, Zeming and Gimelshein, Natalia and Antiga, Luca and Desmaison, Alban and K{\"o}pf, Andreas and Yang, Edward and DeVito, Zachary and Raison, Martin and Tejani, Alykhan and Chilamkurthy, Sasank and Steiner, Benoit and Fang, Lu and Bai, Junjie and Chintala, Soumith},
+  booktitle={NeurIPS},
+  year={2019}
+}
+
+@article{virtanen2020scipy,
+  title={{SciPy} 1.0: Fundamental Algorithms for Scientific Computing in {Python}},
+  author={Virtanen, Pauli and Gommers, Ralf and Oliphant, Travis E. and others},
+  journal={Nature Methods},
+  volume={17},
+  number={3},
+  pages={261--272},
+  year={2020}
+}
+
+@inproceedings{gu2024mamba,
+  title={Mamba: Linear-Time Sequence Modeling with Selective State Spaces},
+  author={Gu, Albert and Dao, Tri},
+  booktitle={COLM},
+  year={2024}
+}
+
+@article{wilcoxon1945,
+  title={Individual Comparisons by Ranking Methods},
+  author={Wilcoxon, Frank},
+  journal={Biometrics Bulletin},
+  volume={1},
+  number={6},
+  pages={80--83},
+  year={1945}
+}
+
+@article{efron1979bootstrap,
+  title={Bootstrap Methods: Another Look at the Jackknife},
+  author={Efron, Bradley},
+  journal={The Annals of Statistics},
+  volume={7},
+  number={1},
+  pages={1--26},
+  year={1979}
+}
+
+@article{kendall1938,
+  title={A New Measure of Rank Correlation},
+  author={Kendall, Maurice G.},
+  journal={Biometrika},
+  volume={30},
+  number={1/2},
+  pages={81--93},
+  year={1938}
+}
+
+@article{dunn1961,
+  title={Multiple Comparisons among Means},
+  author={Dunn, Olive Jean},
+  journal={Journal of the American Statistical Association},
+  volume={56},
+  number={293},
+  pages={52--64},
+  year={1961}
+}

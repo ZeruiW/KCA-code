@@ -1,0 +1,2 @@
+[written] controlled_curves.pdf, controlled_overlay.pdf, controlled_dissoc.pdf in ../paper/fig
+dissociation: {'motion': 1.0, 'shape': 0.0}

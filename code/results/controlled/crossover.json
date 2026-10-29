@@ -1,0 +1,44 @@
+{
+  "motion": {
+    "odd_motion_fraction_pooled": 0.9987351327406198,
+    "odd_motion_fraction_perclip": {
+      "mean": 0.9804188013076782,
+      "std": 0.12783625721931458,
+      "n": 60
+    },
+    "smot_on_odd_total": 32957.85434341431,
+    "sgeo_on_odd_total": 41.7401065826416
+  },
+  "shape": {
+    "odd_motion_fraction_pooled": 0.0,
+    "odd_motion_fraction_perclip": {
+      "mean": 0.0,
+      "std": 0.0,
+      "n": 20
+    },
+    "smot_on_odd_total": 0.0,
+    "sgeo_on_odd_total": 5.38135302066803
+  },
+  "motion_ctx": {
+    "odd_motion_fraction_pooled": 0.9987349828411687,
+    "odd_motion_fraction_perclip": {
+      "mean": 0.9804117679595947,
+      "std": 0.1278371512889862,
+      "n": 60
+    },
+    "smot_on_odd_total": 32956.059589385986,
+    "sgeo_on_odd_total": 41.742786198854446
+  },
+  "shape_ctx": {
+    "odd_motion_fraction_pooled": 0.0002581039613194349,
+    "odd_motion_fraction_perclip": {
+      "mean": 8.453249756712466e-05,
+      "std": 0.00017910888709593564,
+      "n": 20
+    },
+    "smot_on_odd_total": 0.001389617764061768,
+    "sgeo_on_odd_total": 5.382556271237263
+  },
+  "dissociation_gap": 0.9987351327406198,
+  "dissociation_gap_ctx": 0.9984768788798493
+}

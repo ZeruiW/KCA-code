@@ -1,0 +1,6 @@
+arm-moving clips: train 163 test 200
+[kca.cuda_fast] fps: on (picks equal to the loop's: 100.00%) | scan: off (ModuleNotFoundError: No module named 'selective_scan_cuda')
+[motion] trained: test acc 0.787 (101s)
+[motion] acc 0.787 | KCA arm motion share 0.850 (ctx 0.825) | motion-prior EBPG(arm) 0.28
+[geometry] trained: test acc 0.775 (97s)
+[geometry] acc 0.775 | KCA arm motion share 0.781 (ctx 0.760) | motion-prior EBPG(arm) 0.28

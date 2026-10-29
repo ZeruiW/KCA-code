@@ -1,0 +1,164 @@
+{
+ "pstnet": {
+  "extremal": {
+   "deletion_auc": 0.932,
+   "insertion_auc": 0.699,
+   "ebpg": 0.165
+  },
+  "integrated_gradients": {
+   "deletion_auc": 0.303,
+   "insertion_auc": 0.964,
+   "ebpg": 0.436
+  },
+  "kca": {
+   "deletion_auc": 0.262,
+   "insertion_auc": 0.747,
+   "ebpg": 0.382,
+   "smot_ebpg": 0.377
+  },
+  "kca_ctx": {
+   "deletion_auc": 0.217,
+   "insertion_auc": 0.717,
+   "ebpg": 0.398,
+   "smot_ebpg": 0.409
+  },
+  "occam": {
+   "deletion_auc": 0.845,
+   "insertion_auc": 0.966,
+   "ebpg": 0.166
+  },
+  "point_drop": {
+   "deletion_auc": 0.252,
+   "insertion_auc": 0.756,
+   "ebpg": 0.38
+  },
+  "random": {
+   "deletion_auc": 0.95,
+   "insertion_auc": 0.938,
+   "ebpg": 0.166
+  },
+  "_tests": {}
+ },
+ "p4transformer": {
+  "attn_rollout": {
+   "deletion_auc": 0.677,
+   "insertion_auc": 0.78,
+   "ebpg": 0.2
+  },
+  "extremal": {
+   "deletion_auc": 0.638,
+   "insertion_auc": 0.292,
+   "ebpg": 0.136
+  },
+  "geometry_edge": {
+   "deletion_auc": 0.914,
+   "insertion_auc": 0.909,
+   "ebpg": 0.16
+  },
+  "grad_cam_3d": {
+   "deletion_auc": 0.712,
+   "insertion_auc": 0.573,
+   "ebpg": 0.125
+  },
+  "grad_x_input": {
+   "deletion_auc": 0.72,
+   "insertion_auc": 0.7,
+   "ebpg": 0.382
+  },
+  "integrated_gradients": {
+   "deletion_auc": 0.283,
+   "insertion_auc": 0.853,
+   "ebpg": 0.582
+  },
+  "kca": {
+   "deletion_auc": 0.284,
+   "insertion_auc": 0.789,
+   "ebpg": 0.492,
+   "smot_ebpg": 0.556
+  },
+  "kca_ctx": {
+   "deletion_auc": 0.207,
+   "insertion_auc": 0.764,
+   "ebpg": 0.482,
+   "smot_ebpg": 0.543
+  },
+  "motion_prior": {
+   "deletion_auc": 0.482,
+   "insertion_auc": 0.867,
+   "ebpg": 0.301
+  },
+  "occam": {
+   "deletion_auc": 0.872,
+   "insertion_auc": 0.956,
+   "ebpg": 0.16
+  },
+  "point_drop": {
+   "deletion_auc": 0.25,
+   "insertion_auc": 0.769,
+   "ebpg": 0.432
+  },
+  "random": {
+   "deletion_auc": 0.929,
+   "insertion_auc": 0.93,
+   "ebpg": 0.16
+  },
+  "smoothgrad": {
+   "deletion_auc": 0.767,
+   "insertion_auc": 0.929,
+   "ebpg": 0.296
+  },
+  "staa4d": {
+   "deletion_auc": 0.574,
+   "insertion_auc": 0.689,
+   "ebpg": 0.256
+  },
+  "transformer_attr": {
+   "deletion_auc": 0.642,
+   "insertion_auc": 0.778,
+   "ebpg": 0.16
+  },
+  "_tests": {}
+ },
+ "mamba4d": {
+  "extremal": {
+   "deletion_auc": 0.577,
+   "insertion_auc": 0.414,
+   "ebpg": 0.153
+  },
+  "integrated_gradients": {
+   "deletion_auc": 0.329,
+   "insertion_auc": 0.803,
+   "ebpg": 0.496
+  },
+  "kca": {
+   "deletion_auc": 0.314,
+   "insertion_auc": 0.702,
+   "ebpg": 0.431,
+   "smot_ebpg": 0.438
+  },
+  "kca_ctx": {
+   "deletion_auc": 0.269,
+   "insertion_auc": 0.711,
+   "ebpg": 0.446,
+   "smot_ebpg": 0.475
+  },
+  "occam": {
+   "deletion_auc": 0.778,
+   "insertion_auc": 0.965,
+   "ebpg": 0.166
+  },
+  "point_drop": {
+   "deletion_auc": 0.246,
+   "insertion_auc": 0.746,
+   "ebpg": 0.4
+  },
+  "random": {
+   "deletion_auc": 0.902,
+   "insertion_auc": 0.897,
+   "ebpg": 0.166
+  },
+  "_tests": {}
+ }
+}
+[figures] -> /content/drive/MyDrive/kca_full/paper_full/fig
+[report] 4 claim(s) no longer hold -> /content/drive/MyDrive/kca_full/report/REPORT.md

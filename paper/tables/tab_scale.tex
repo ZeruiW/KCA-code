@@ -1,0 +1,19 @@
+Test accuracy, P4Transformer (\%) & 90.6 & 89.2\\
+Test accuracy, PSTNet (\%) & 87.5 & 88.9\\
+Test accuracy, Mamba4D (\%) & 83.6 & 88.2\\
+\midrule
+P4T Del.: \method\ (context) & 0.178 & 0.179\\
+P4T Del.: region occlusion & 0.219 & 0.233\\
+P4T Del.: Integrated Gradients & 0.268 & 0.282\\
+P4T Del.: context vs.\ occlusion & $p{=}0.0043$ & $p{<}10^{-3}$\\
+P4T Del.: context vs.\ IG & $p{<}10^{-3}$ & $p{<}10^{-3}$\\
+PSTNet Del.: context / occlusion & 0.191 / 0.222 & 0.217 / 0.252\\
+Mamba4D Del.: context / occlusion & 0.245 / 0.240 & 0.269 / 0.246\\
+Mamba4D Del.: context vs.\ IG & $p{<}10^{-3}$ & $p{=}0.064$\\
+P4T $\Smot$ EBPG: context / IG & 0.54 / 0.58 & 0.50 / 0.55\\
+\midrule
+Crossover P4T: motion / shape task & 0.81 / 0.39 & 0.83 / 0.60\\
+Crossover PSTNet: motion / shape task & 0.85 / 0.23 & 0.86 / 0.30\\
+Crossover Mamba4D: motion / shape task & 0.89 / 0.54 & 0.92 / 0.61\\
+\midrule
+Randomised model: \method\ / Grad$\times$Input & $-$0.01 / 0.72 & $-$0.10 / 0.81\\

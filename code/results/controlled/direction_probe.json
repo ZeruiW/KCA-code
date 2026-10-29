@@ -1,0 +1,23 @@
+{
+  "val_acc": 0.975,
+  "displace_necessity": {
+    "mean": 3.2113747596740723,
+    "std": 1.1155837774276733,
+    "n": 20
+  },
+  "freeze_necessity": {
+    "mean": 1.1287322044372559,
+    "std": 1.43271803855896,
+    "n": 20
+  },
+  "displace_flip_to_opposite": {
+    "mean": 0.8999999761581421,
+    "std": 0.30000001192092896,
+    "n": 20
+  },
+  "freeze_flip_to_opposite": {
+    "mean": 0.0,
+    "std": 0.0,
+    "n": 20
+  }
+}

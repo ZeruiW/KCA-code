@@ -1,0 +1,24 @@
+local_m6 {'deletion_auc': 0.245, 'insertion_auc': 0.743, 'smot_ebpg': 0.457, 'smot_pg': 0.45, 'dint_over_nec': 0.549, 'time_s': 2.082, 'n_forward': 19.0, 'motion_share_moving': 0.711}
+ctx_m6 {'deletion_auc': 0.189, 'insertion_auc': 0.733, 'smot_ebpg': 0.435, 'smot_pg': 0.45, 'dint_over_nec': 0.482, 'time_s': 25.042, 'n_forward': 257.0, 'motion_share_moving': 0.701}
+local_m12 {'deletion_auc': 0.25, 'insertion_auc': 0.763, 'smot_ebpg': 0.584, 'smot_pg': 0.65, 'dint_over_nec': 0.628, 'time_s': 3.416, 'n_forward': 37.0, 'motion_share_moving': 0.766}
+ctx_m12 {'deletion_auc': 0.2, 'insertion_auc': 0.76, 'smot_ebpg': 0.572, 'smot_pg': 0.65, 'dint_over_nec': 0.551, 'time_s': 24.057, 'n_forward': 257.0, 'motion_share_moving': 0.788}
+local_m24 {'deletion_auc': 0.432, 'insertion_auc': 0.839, 'smot_ebpg': 0.579, 'smot_pg': 0.75, 'dint_over_nec': 0.706, 'time_s': 5.635, 'n_forward': 73.0, 'motion_share_moving': 0.849}
+ctx_m24 {'deletion_auc': 0.228, 'insertion_auc': 0.799, 'smot_ebpg': 0.562, 'smot_pg': 0.825, 'dint_over_nec': 0.707, 'time_s': 21.51, 'n_forward': 257.0, 'motion_share_moving': 0.847}
+local_m12_bg {'deletion_auc': 0.226, 'insertion_auc': 0.796, 'smot_ebpg': 0.539, 'smot_pg': 0.625, 'dint_over_nec': 0.772, 'time_s': 3.258, 'n_forward': 37.0, 'motion_share_moving': 0.733}
+ctx_m12_bg {'deletion_auc': 0.155, 'insertion_auc': 0.816, 'smot_ebpg': 0.512, 'smot_pg': 0.675, 'dint_over_nec': 0.611, 'time_s': 20.442, 'n_forward': 257.0, 'motion_share_moving': 0.747}
+local_m12_nn {'deletion_auc': 0.228, 'insertion_auc': 0.791, 'smot_ebpg': 0.538, 'smot_pg': 0.625, 'dint_over_nec': 0.792, 'time_s': 3.024, 'n_forward': 37.0, 'motion_share_moving': 0.733}
+/Users/z/Documents/4DXAI/code/src/kca/run/msr_ablation.py:52: RuntimeWarning: Mean of empty slice
+  out = {k: float(np.nanmean([r[k] for r in rows])) for k in rows[0] if k not in ("smot_moving", "sgeo_moving")}
+local_m12_motionfirst {'deletion_auc': 0.25, 'insertion_auc': 0.763, 'smot_ebpg': 0.568, 'smot_pg': 0.65, 'dint_over_nec': nan, 'time_s': 2.31, 'n_forward': 25.0, 'motion_share_moving': 0.86}
+ctx_m12_S64 {'deletion_auc': 0.214, 'insertion_auc': 0.775, 'smot_ebpg': 0.525, 'smot_pg': 0.65, 'dint_over_nec': 0.741, 'time_s': 5.994, 'n_forward': 65.0, 'motion_share_moving': 0.787}
+ctx_m12_S128 {'deletion_auc': 0.184, 'insertion_auc': 0.777, 'smot_ebpg': 0.559, 'smot_pg': 0.65, 'dint_over_nec': 0.603, 'time_s': 10.506, 'n_forward': 129.0, 'motion_share_moving': 0.794}
+ctx_m12_S512 {'deletion_auc': 0.202, 'insertion_auc': 0.769, 'smot_ebpg': 0.576, 'smot_pg': 0.65, 'dint_over_nec': 0.496, 'time_s': 35.996, 'n_forward': 513.0, 'motion_share_moving': 0.804}
+ctx_m12_q0.75 {'deletion_auc': 0.221, 'insertion_auc': 0.773, 'smot_ebpg': 0.589, 'smot_pg': 0.65, 'dint_over_nec': 0.611, 'time_s': 18.47, 'n_forward': 257.0, 'motion_share_moving': 0.772}
+sanity {'blocks_randomized': 1, 'kca_rankcorr': -0.11380792828276753, 'gradxinput_rankcorr': 0.8464022725820541}
+sanity {'blocks_randomized': 2, 'kca_rankcorr': -0.1312202971894294, 'gradxinput_rankcorr': 0.7821262627840042}
+sanity {'blocks_randomized': 3, 'kca_rankcorr': -0.059812938701361416, 'gradxinput_rankcorr': 0.8145760059356689}
+sanity {'blocks_randomized': 4, 'kca_rankcorr': -0.014107380155473947, 'gradxinput_rankcorr': 0.7667505577206611}
+sanity {'blocks_randomized': 5, 'kca_rankcorr': 0.002894441335229203, 'gradxinput_rankcorr': 0.7777577623724937}
+sanity {'blocks_randomized': 6, 'kca_rankcorr': -0.07041265380103141, 'gradxinput_rankcorr': 0.6993381723761558}
+sanity {'blocks_randomized': 7, 'kca_rankcorr': -0.013397395238280296, 'gradxinput_rankcorr': 0.7222284734249115}
+displace {'freeze_drop': 5.24450808656402, 'reverse_drop': 1.6992220908403397, 'freeze_flip': 0.475, 'reverse_flip': 0.175}

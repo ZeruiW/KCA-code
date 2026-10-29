@@ -1,0 +1,36 @@
+OK  Smot(A)=4.800 Sgeo(A)=16.000 | Smot(B)=0.000 Sgeo(B)=16.000 | eps=0.00e+00
+OK  explain(): 4 regions scored, 13 forward passes, fields (1, 4, 8)
+
+ALL CORE TESTS PASSED
+OK  vertices | phi=13.702 = frz(shape)=0.902 + geo(motion)=12.800 - abl=0.000
+OK  symmetrized completeness holds; additive Delta_int=1.91e-06 (~0)
+OK  interacting oracle | completeness exact, Delta_int=11.549 (!=0, detected)
+
+ALL SYMMETRIZATION TESTS PASSED
+OK  per-frame point shuffling leaves KCA scores unchanged (max diff 3.0e-07)
+OK  freeze/displace/abl-geo act on the tracked region without point identity; index-aligned freeze fails the same check (drift 0.43)
+
+ALL CORRESPONDENCE-FREE TESTS PASSED
+OK  all 17 methods run; attention methods correctly n/a on SSM oracle
+OK  metric correct | true-field Del 298.1<337.4  Ins 397.1>337.0 (random)
+OK  KCA field valid | nec moving 42.2>30.6 static | smot moving 27.6>21.1 static
+OK  Smot EBPG 0.598 > random 0.556 | PG 0.75 | Comp 145.02 Suff 678.81
+OK  Adebayo: rank-corr under weight change = 0.680 (< 1.0, attribution depends on model)
+
+ALL METRIC/BASELINE TESTS PASSED
+OK  evaluate(): 6 methods over 6 clips; staa4d n/a; tables.tex written
+    sample row (KCA): \textbf{KCA} & 0.500$\pm$0.469 & 0.500$\pm$0.469 & 0.000$\pm$0.000 & 0.000$\pm$0.004 & 0.0
+OK  cross-backbone Kendall tau(bb1,bb2) on deletion = nan
+OK  amortized head trained; O(1) fields shape (1, 6, 64); smot moving 14.838 vs static 14.000
+
+ALL PIPELINE TESTS PASSED
+acc=1.00
+Deletion-AUC  KCA 0.388 | random 0.909 | geo-edge 0.886  (lower=better)
+Insertion-AUC KCA 0.909 | random 0.909   (higher=better; OOD-sensitive)
+Smot EBPG->moving  KCA 0.990 | random 0.333            (higher=better)
+OK  on a TRAINED 4D net: KCA deletion crushes both floors; Smot localizes motion (EBPG 0.99)
+
+REAL-BACKBONE VALIDATION PASSED
+OK  acc=0.97 | displace-reverse flips to OPPOSITE 92% vs freeze 0% | necessity displace 3.28 vs freeze 1.15
+
+DISPLACE SIGN-SENSITIVITY TEST PASSED

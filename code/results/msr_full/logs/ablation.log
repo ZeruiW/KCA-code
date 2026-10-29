@@ -1,0 +1,28 @@
+[kca.cuda_fast] fps: on (picks equal to the loop's: 100.00%) | scan: on
+local_m6 {'deletion_auc': 0.235, 'insertion_auc': 0.748, 'smot_ebpg': 0.468, 'smot_pg': 0.425, 'dint_over_nec': 0.456, 'time_s': 0.26, 'n_forward': 19.0, 'motion_share_moving': 0.646}
+ctx_m6 {'deletion_auc': 0.192, 'insertion_auc': 0.735, 'smot_ebpg': 0.443, 'smot_pg': 0.425, 'dint_over_nec': 0.478, 'time_s': 2.269, 'n_forward': 257.0, 'motion_share_moving': 0.647}
+local_m12 {'deletion_auc': 0.272, 'insertion_auc': 0.753, 'smot_ebpg': 0.542, 'smot_pg': 0.625, 'dint_over_nec': 0.631, 'time_s': 0.473, 'n_forward': 37.0, 'motion_share_moving': 0.728}
+ctx_m12 {'deletion_auc': 0.219, 'insertion_auc': 0.747, 'smot_ebpg': 0.543, 'smot_pg': 0.65, 'dint_over_nec': 0.575, 'time_s': 2.322, 'n_forward': 257.0, 'motion_share_moving': 0.746}
+local_m24 {'deletion_auc': 0.334, 'insertion_auc': 0.814, 'smot_ebpg': 0.544, 'smot_pg': 0.675, 'dint_over_nec': 0.704, 'time_s': 0.834, 'n_forward': 73.0, 'motion_share_moving': 0.781}
+ctx_m24 {'deletion_auc': 0.212, 'insertion_auc': 0.795, 'smot_ebpg': 0.52, 'smot_pg': 0.65, 'dint_over_nec': 0.66, 'time_s': 2.388, 'n_forward': 257.0, 'motion_share_moving': 0.824}
+local_m12_bg {'deletion_auc': 0.235, 'insertion_auc': 0.752, 'smot_ebpg': 0.494, 'smot_pg': 0.625, 'dint_over_nec': 0.754, 'time_s': 0.52, 'n_forward': 37.0, 'motion_share_moving': 0.704}
+ctx_m12_bg {'deletion_auc': 0.126, 'insertion_auc': 0.757, 'smot_ebpg': 0.506, 'smot_pg': 0.675, 'dint_over_nec': 0.584, 'time_s': 3.021, 'n_forward': 257.0, 'motion_share_moving': 0.716}
+local_m12_nn {'deletion_auc': 0.208, 'insertion_auc': 0.758, 'smot_ebpg': 0.5, 'smot_pg': 0.65, 'dint_over_nec': 0.723, 'time_s': 2.052, 'n_forward': 37.0, 'motion_share_moving': 0.704}
+/content/kca/code/src/kca/run/msr_ablation.py:53: RuntimeWarning: Mean of empty slice
+  out = {k: float(np.nanmean([r[k] for r in rows])) for k in rows[0] if k not in ("smot_moving", "sgeo_moving")}
+local_m12_motionfirst {'deletion_auc': 0.272, 'insertion_auc': 0.755, 'smot_ebpg': 0.53, 'smot_pg': 0.625, 'dint_over_nec': nan, 'time_s': 1.526, 'n_forward': 25.0, 'motion_share_moving': 0.879}
+ctx_m12_S64 {'deletion_auc': 0.231, 'insertion_auc': 0.736, 'smot_ebpg': 0.488, 'smot_pg': 0.625, 'dint_over_nec': 0.77, 'time_s': 0.68, 'n_forward': 65.0, 'motion_share_moving': 0.751}
+ctx_m12_S128 {'deletion_auc': 0.204, 'insertion_auc': 0.734, 'smot_ebpg': 0.529, 'smot_pg': 0.65, 'dint_over_nec': 0.641, 'time_s': 1.225, 'n_forward': 129.0, 'motion_share_moving': 0.761}
+ctx_m12_S512 {'deletion_auc': 0.211, 'insertion_auc': 0.755, 'smot_ebpg': 0.545, 'smot_pg': 0.625, 'dint_over_nec': 0.522, 'time_s': 4.496, 'n_forward': 513.0, 'motion_share_moving': 0.757}
+ctx_m12_q0.75 {'deletion_auc': 0.233, 'insertion_auc': 0.769, 'smot_ebpg': 0.55, 'smot_pg': 0.65, 'dint_over_nec': 0.627, 'time_s': 2.304, 'n_forward': 257.0, 'motion_share_moving': 0.737}
+local_m12_t0mid {'deletion_auc': 0.245, 'insertion_auc': 0.791, 'smot_ebpg': 0.556, 'smot_pg': 0.575, 'dint_over_nec': 0.654, 'time_s': 0.471, 'n_forward': 37.0, 'motion_share_moving': 0.676}
+ctx_m12_t0mid {'deletion_auc': 0.173, 'insertion_auc': 0.746, 'smot_ebpg': 0.568, 'smot_pg': 0.6, 'dint_over_nec': 0.575, 'time_s': 2.322, 'n_forward': 257.0, 'motion_share_moving': 0.69}
+sanity {'blocks_randomized': 1, 'kca_rankcorr': 0.1178938528522849, 'gradxinput_rankcorr': 0.8970155656337738}
+sanity {'blocks_randomized': 2, 'kca_rankcorr': 0.06336610894650221, 'gradxinput_rankcorr': 0.8911077618598938}
+sanity {'blocks_randomized': 3, 'kca_rankcorr': 0.09518446400761604, 'gradxinput_rankcorr': 0.8513426780700684}
+sanity {'blocks_randomized': 4, 'kca_rankcorr': 0.09379857368767261, 'gradxinput_rankcorr': 0.8112169161438942}
+sanity {'blocks_randomized': 5, 'kca_rankcorr': -0.026855305023491382, 'gradxinput_rankcorr': 0.8400257140398025}
+sanity {'blocks_randomized': 6, 'kca_rankcorr': -0.07354342588223517, 'gradxinput_rankcorr': 0.8637777179479599}
+sanity {'blocks_randomized': 7, 'kca_rankcorr': -0.1630370327970013, 'gradxinput_rankcorr': 0.8119161337614059}
+sanity {'blocks_randomized': 8, 'kca_rankcorr': -0.10119836525991559, 'gradxinput_rankcorr': 0.8102492153644562}
+displace {'freeze_drop': 7.891145867854357, 'reverse_drop': 2.370355409383774, 'freeze_flip': 0.425, 'reverse_flip': 0.225}

@@ -1,0 +1,36 @@
+{
+  "backbone": "p4transformer",
+  "last_acc": 0.89198606271777,
+  "best_acc": 0.89198606271777,
+  "params_M": 44.135444,
+  "cfg": {},
+  "preproc": {
+    "center": true
+  },
+  "args": {
+    "backbone": "p4transformer",
+    "data": "/content/kca/data/msr",
+    "out": "/content/drive/MyDrive/kca_full/ckpt/p4t",
+    "repo": null,
+    "scale": "official",
+    "frames": 24,
+    "points": 2048,
+    "epochs": 50,
+    "bs": 14,
+    "opt": "adamw",
+    "lr": 0.0003,
+    "wd": 0.05,
+    "warmup": 5,
+    "milestones": [
+      0.6,
+      0.85
+    ],
+    "center": 1,
+    "t_init_scale": 0.08333333333333333,
+    "clips_per_video": 17,
+    "eval_every": 5,
+    "device": "cuda",
+    "seed": 0,
+    "resume": true
+  }
+}

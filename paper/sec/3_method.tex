@@ -1,0 +1,112 @@
+\section{Method}
+\label{sec:method}
+
+\method explains a trained 4D model by \emph{intervening} on spacetime regions of its input and measuring the causal effect on the prediction. After fixing the causal setting (Sec.~\ref{sec:method-prelim}) and notation (Sec.~\ref{sec:method-setup}), we define correspondence-free interventions (Sec.~\ref{sec:method-interventions}) and the causal scores they induce (Sec.~\ref{sec:method-causal}), derive the motion-vs-geometry decomposition that is our central contribution (Sec.~\ref{sec:method-decomp}), establish its properties (Sec.~\ref{sec:method-theory}), and give two estimators (Sec.~\ref{sec:method-eff}). Fig.~\ref{fig:method} gives an overview.
+
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[font=\small,>=Latex,node distance=6mm,
+  box/.style={draw,rounded corners,align=center,minimum height=10mm,inner sep=3pt,fill=gray!8},
+  op/.style={draw,rounded corners,align=center,minimum height=10mm,inner sep=3pt,fill=blue!8},
+  res/.style={draw,rounded corners,align=center,minimum height=10mm,inner sep=3pt,fill=green!8}]
+\node[box] (x) {Clip $X{=}\{P_t\}_{t=1}^{T}$\\[-1pt]\footnotesize no point identity};
+\node[box,right=of x] (reg) {\textbf{(1) Tracked regions}\\[-1pt]\footnotesize per-frame sets $\setR_t$};
+\node[op,right=of reg] (cube) {\textbf{(2) $(M,G)$ cube per region}\\[-1pt]\footnotesize $X$ \,$|$\, \frz \,$|$\, \ablgeo \,$|$\, \abl};
+\node[op,right=of cube] (est) {\textbf{(3) Estimator}\\[-1pt]\footnotesize local $O(m)$ \,/\, context $O(S)$};
+\node[res,right=of est] (scores) {\textbf{(4)} $\Smot,\Sgeo,\Delta_{\mathrm{int}}$\\[-1pt]\footnotesize $\Nec=\Smot+\Sgeo$};
+\draw[->] (x)--(reg); \draw[->] (reg)--(cube); \draw[->] (cube)--(est); \draw[->] (est)--(scores);
+\node[font=\footnotesize,above=0pt of est,text=blue!50!black] {model-agnostic ($f$ outputs only)};
+\end{tikzpicture}}
+\caption{\textbf{Method overview.} Regions are tracked through time as per-frame point \emph{sets}, so no cross-frame point correspondence is needed. Each region carries two factors---its geometry $G$ and its motion $M$---and four interventions realize the corners of the $(M,G)$ cube; every edge of the cube changes exactly one factor. A local or a context-averaged estimator turns the cube's outputs into order-symmetric motion and geometry importance whose interaction is measured. Only outputs of $f$ are used, so the same pipeline explains convolutional, attention and state-space backbones.}
+\label{fig:method}
+\end{figure*}
+
+\subsection{Preliminaries: causal attribution}
+\label{sec:method-prelim}
+We adopt the interventional view of explanation~\cite{watson2021lens,janzing2020feature,pearl2009causality}: the importance of an input component is the change it \emph{causes} in the output under an intervention $\doop{\cdot}$, rather than a gradient or attention read-out. For a target $\varphi$ and a manipulable factor $Z$, the \emph{average causal effect} (ACE) of setting $Z{=}z$ against a reference $z_0$ is $\ace_Z = \Ex[\varphi\mid \doop{Z{=}z}]-\Ex[\varphi\mid \doop{Z{=}z_0}]$. Pearl's probability of \emph{necessity} ($\PN$) asks whether removing a cause flips the outcome, and of \emph{sufficiency} ($\PS$) whether the cause alone produces it~\cite{pearl2009causality}; \citet{watson2021lens} operationalize local $\PN/\PS$ for feature subsets. We (i) instantiate these for \emph{spacetime} regions of a 4D model, without assuming point correspondences, and (ii) factor each region's effect into \emph{motion} and \emph{geometry}---a factorization unique to dynamic-3D data. Appendix~\ref{supp:notation} summarises the notation and gives pseudocode (Alg.~\ref{alg:kca}).
+
+
+\subsection{Problem formulation}
+\label{sec:method-setup}
+A point-cloud video is a sequence $X=\{P_t\}_{t=1}^{T}$, $P_t=\{\mathbf{p}_{t,i}\}_{i=1}^{N_t}\subset\real^{3}$. Depth and LiDAR sensors re-sample the surface in every frame, so there is \emph{no point identity} across frames: index $i$ in frame $t$ and index $i$ in frame $t'$ are unrelated points. A trained model $f$ maps $X$ to logits; we explain $\varphi(X)=f(X)_c$ for the predicted class $c$ (any scalar read-out is admissible, including non-differentiable ones). The spacetime support is partitioned into $m$ \emph{tracked regions}: region $\setR$ is a sequence of per-frame point sets $\{\setR_t\subseteq P_t\}_t$ covering the same physical structure (tracked k-means supervoxels; Appendix~\ref{supp:impl}). \method assigns each region $\Sgeo(\setR)$ and $\Smot(\setR)$, aggregated into per-point fields.
+
+\subsection{Correspondence-free spacetime interventions}
+\label{sec:method-interventions}
+A region has two factors: its \emph{geometry} $G$ (the shape it has in each frame) and its \emph{motion} $M$ (how it moves through time). We realize every combination with operators that act only on the per-frame sets $\setR_t$---never on indexed points:
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+\item $\doop{\frz,\setR}$ \,($M{=}0$, $G{=}1$): every $\setR_t$ is replaced by the region's anchor-frame set $\setR_{t_0}$ (re-sampled to $|\setR_t|$ points): the region stays static in its $t_0$ configuration, with its real shape. This removes \emph{all} of its motion---translation, rotation and articulation alike---without any correspondence.
+\item $\doop{\ablgeo,\setR}$ \,($M{=}1$, $G{=}0$): $\setR_t$ is replaced by a \emph{shape-free proxy}---a point mass---that follows the region's centroid trajectory $c_t(\setR)$: the region keeps its motion but loses its shape.
+\item $\doop{\abl,\setR}$ \,($M{=}0$, $G{=}0$): the same proxy, held static at $c_{t_0}(\setR)$.
+\end{itemize}
+The four corners $X$, $\doop{\frz,\setR}X$, $\doop{\ablgeo,\setR}X$, $\doop{\abl,\setR}X$ form the region's $(M,G)$ cube, and \emph{every edge changes exactly one factor}. This is the property that makes the decomposition below meaningful: had \abl\ \emph{deleted} the region while \ablgeo\ kept a proxy, the edge $\ablgeo\!\to\!\abl$ would change presence as well as motion, and a static region's presence would be booked as ``motion'' (we measure this failure mode in Sec.~\ref{sec:exp-ablation}). Keeping the proxy at the region's own location also keeps every corner on the scene's support. A third operator, $\doop{\dsp,\setR}$, replays the region's sets in reversed or permuted order ($\setR_t\!\leftarrow\!\setR_{\pi(t)}$): a sign-sensitive probe of motion \emph{direction}. When point identity does exist (synthetic data), all operators reduce exactly to their index-aligned forms, \eg $\mathbf p_{t,i}\!\leftarrow\!\mathbf p_{t_0,i}$ for \frz.
+
+\subsection{Causal attribution: necessity and sufficiency}
+\label{sec:method-causal}
+\emph{Necessity} measures the drop when a region's spatio-temporal content---shape and motion---is replaced by the static proxy,
+\begin{equation}
+\Nec(\setR)\;=\;\varphi(X)\;-\;\varphi\!\big(\doop{\abl,\setR}\,X\big),
+\label{eq:necessity}
+\end{equation}
+and \emph{sufficiency} how much the region alone preserves, $\Suf(\setR)=\varphi(\doop{\abl,\domega\!\setminus\!\setR}X)-\varphi(\doop{\abl,\domega}X)$. High $\Nec$ marks regions the decision \emph{depends on}. Unlike attention or gradients, both are defined for \emph{any} $f$, including attention-free state-space models.
+
+\subsection{Disentangling motion from geometry}
+\label{sec:method-decomp}
+Necessity conflates a region's motion and its geometry; the cube separates them. Writing $\varphi\!\equiv\!\varphi(X)$ and $\varphi_{\mathrm{op}}\!\equiv\!\varphi(\doop{\mathrm{op},\setR}X)$, the two paths from $X$ to $\doop{\abl,\setR}X$ remove motion first or geometry first; averaging them yields the \emph{order-symmetric} scores
+\begin{align}
+\Smot(\setR)&=\tfrac12\big[(\varphi-\varphi_{\frz})+(\varphi_{\ablgeo}-\varphi_{\abl})\big],\nonumber\\
+\Sgeo(\setR)&=\tfrac12\big[(\varphi-\varphi_{\ablgeo})+(\varphi_{\frz}-\varphi_{\abl})\big],
+\label{eq:sym}
+\end{align}
+each an average of two single-factor contrasts. $\Smot$ asks \emph{does the decision depend on how this structure moves?}, $\Sgeo$ \emph{does it depend on what shape it has?}---a question no prior attribution can pose. Their gap to the single-order scores is the interaction
+\begin{equation}
+\Delta_{\mathrm{int}}(\setR)=\varphi-\varphi_{\frz}-\varphi_{\ablgeo}+\varphi_{\abl},
+\label{eq:dint}
+\end{equation}
+which we \emph{measure} rather than assume away.
+
+\subsection{Theoretical properties}
+\label{sec:method-theory}
+\method queries $f$ only through outputs of intervened inputs, so its guarantees hold for every architecture. The headline results require only interventional validity \textbf{(I)}; separability \textbf{(S)} is \emph{measured}, not assumed (Tab.~\ref{tab:assump}; proofs in Appendix~\ref{supp:proofs}).
+
+\begin{assumption}[Interventional validity \textbf{(I)} \& separability \textbf{(S)}]
+\label{asm:factor}
+A region's effect on $\varphi$ is mediated by a geometry factor $G_\setR$ and a motion factor $M_\setR$. \textbf{(I)} \frz, \ablgeo\ and \abl\ set the targeted factor(s) without altering off-region content (they only rewrite $\setR_t$). \textbf{(S)} \emph{(diagnostic)} $\varphi$ is additively separable in $(M_\setR,G_\setR)$, \ie the discrete mixed difference vanishes.
+\end{assumption}
+
+\begin{proposition}[Completeness and the order-2 Shapley decomposition]
+\label{prop:interact}
+For any $f$, $\Smot(\setR)+\Sgeo(\setR)=\Nec(\setR)$. $(\Smot,\Sgeo)$ is the Shapley value of the two-player game $\{M_\setR,G_\setR\}$ with worth $v(\{\cdot\})=\varphi$ at the corresponding corner; $\Delta_{\mathrm{int}}$ is its Shapley interaction index~\cite{grabisch1999interaction}; each single-order score deviates from the symmetric one by exactly $\pm\Delta_{\mathrm{int}}/2$; and $\Delta_{\mathrm{int}}{=}0$ iff \textbf{(S)} holds for $\setR$.
+\end{proposition}
+
+\begin{proposition}[Causal identification of motion]
+\label{prop:ace}
+Under \textbf{(I)}, $\varphi-\varphi_{\frz}$ is the interventional effect of region $\setR$'s motion at its real geometry and $\varphi_{\ablgeo}-\varphi_{\abl}$ the same effect for a shape-free body (CaCE-type contrasts~\cite{goyal2019cace}); $\Smot$ is their average. Under \textbf{(S)} the two coincide and equal the marginal motion ACE; symmetrically for $\Sgeo$.
+\end{proposition}
+
+\begin{proposition}[Necessity correspondence]
+\label{prop:pnps}
+With the decision event $E{=}\mathbf 1[\varphi{\ge}\kappa]$, $\Nec(\setR)$ is the margin relaxation of the empirical probability of necessity $\PN(\setR)=\Pr[E(\doop{\abl,\setR}X){=}0\mid E(X){=}1]$~\cite{pearl2009causality,watson2021lens}; under monotonicity and exogeneity \textbf{(M)} it is identified by the excess-risk ratio. $\Suf$ is the dual $\PS$ score.
+\end{proposition}
+
+
+\subsection{Estimation}
+\label{sec:method-eff}
+\paragraph{Local estimator.} Evaluating the cube of every region at the observed input costs $3m{+}1$ forward passes, which we batch. The local scores answer ``what happens if this region alone is intervened on''---the classic occlusion question.
+
+\paragraph{Context-averaged estimator.} Local contrasts under-credit \emph{redundant} structure: if a decision-relevant part spans several regions, removing any one of them leaves enough of the others, and every local necessity is small. We therefore also average the same contrasts over random \emph{contexts} in which the other regions are themselves intervened. We draw $S$ joint states with every factor $M_{\setR},G_{\setR}\sim\mathrm{Bernoulli}(q)$ independently, evaluate $\varphi$ once per state (all regions intervened jointly), and fit
+\begin{equation}
+\varphi\approx\beta_0+\textstyle\sum_{\setR}\big(\mu_{\setR}M_{\setR}+\gamma_{\setR}G_{\setR}+\iota_{\setR}M_{\setR}G_{\setR}\big)
+\label{eq:context}
+\end{equation}
+by least squares, then set $\Smot{=}\mu+\iota/2$, $\Sgeo{=}\gamma+\iota/2$, $\Delta_{\mathrm{int}}{=}\iota$, $\Nec{=}\mu{+}\gamma{+}\iota$.
+\begin{proposition}[Context-averaged decomposition]
+\label{prop:context}
+Eq.~\eqref{eq:context} satisfies completeness $\Smot+\Sgeo=\Nec$ exactly. If $\varphi$ has no cross-region interactions, its population solution equals Eq.~\eqref{eq:sym} (for any context); otherwise it is the context-averaged (Banzhaf-type~\cite{banzhaf1965}) version of Eq.~\eqref{eq:sym} under the sampling distribution.
+\end{proposition}
+The cost is $S$ passes, independent of $m$. Both estimators use the same interventions; the local one is exact for a single context and cheaper, the context one is robust to redundancy.
+
+
+\subsection{Model-agnostic instantiation}
+\label{sec:method-inst}
+We explain three architecturally distinct official backbones with the \emph{same} code: the convolutional PSTNet~\cite{fan2021pstnet}, the attention-based P4Transformer~\cite{fan2021p4transformer}, and the attention-free state-space Mamba4D~\cite{liu2025mamba4d}. The interventions and scores (Eqs.~\eqref{eq:necessity}--\eqref{eq:context}) touch the model only through its outputs; the only backbone-specific code is the input contract (a fixed number of points per frame, so an intervened frame is re-sampled from its remaining points, as the official data loaders do). Attention is never used: \method is equally defined on models that have none.

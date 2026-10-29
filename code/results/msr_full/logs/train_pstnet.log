@@ -1,0 +1,38 @@
+[kca.cuda_fast] fps: on (picks equal to the loop's: 100.00%) | scan: on
+[pstnet] device=cuda cfg={} params=8.26M train=270 test=297 T=24 N=2048
+ep   1/35 loss 2.036 train-acc 0.442 lr 6.218e-05 (136s)
+ep   2/35 loss 0.476 train-acc 0.870 lr 0.0001216 (135s)
+ep   3/35 loss 0.253 train-acc 0.929 lr 0.000181 (135s)
+ep   4/35 loss 0.266 train-acc 0.916 lr 0.0002404 (135s)
+ep   5/35 loss 0.227 train-acc 0.925 lr 0.0002998 (135s)  test-video-acc 0.718
+ep   6/35 loss 0.260 train-acc 0.923 lr 0.0002992 (135s)
+ep   7/35 loss 0.183 train-acc 0.945 lr 0.0002968 (135s)
+ep   8/35 loss 0.192 train-acc 0.942 lr 0.0002927 (135s)
+ep   9/35 loss 0.180 train-acc 0.951 lr 0.0002872 (135s)
+ep  10/35 loss 0.132 train-acc 0.962 lr 0.0002801 (135s)  test-video-acc 0.599
+ep  11/35 loss 0.170 train-acc 0.953 lr 0.0002717 (135s)
+ep  12/35 loss 0.112 train-acc 0.968 lr 0.0002619 (135s)
+ep  13/35 loss 0.128 train-acc 0.963 lr 0.0002509 (135s)
+ep  14/35 loss 0.076 train-acc 0.977 lr 0.0002388 (135s)
+ep  15/35 loss 0.083 train-acc 0.977 lr 0.0002258 (135s)  test-video-acc 0.561
+ep  16/35 loss 0.095 train-acc 0.976 lr 0.000212 (135s)
+ep  17/35 loss 0.072 train-acc 0.981 lr 0.0001974 (135s)
+ep  18/35 loss 0.052 train-acc 0.983 lr 0.0001824 (135s)
+ep  19/35 loss 0.046 train-acc 0.986 lr 0.0001671 (135s)
+ep  20/35 loss 0.051 train-acc 0.984 lr 0.0001516 (135s)  test-video-acc 0.843
+ep  21/35 loss 0.039 train-acc 0.988 lr 0.000136 (135s)
+ep  22/35 loss 0.030 train-acc 0.992 lr 0.0001207 (135s)
+ep  23/35 loss 0.030 train-acc 0.990 lr 0.0001057 (135s)
+ep  24/35 loss 0.035 train-acc 0.992 lr 9.115e-05 (135s)
+ep  25/35 loss 0.022 train-acc 0.994 lr 7.73e-05 (135s)  test-video-acc 0.739
+ep  26/35 loss 0.013 train-acc 0.996 lr 6.426e-05 (135s)
+ep  27/35 loss 0.012 train-acc 0.996 lr 5.218e-05 (135s)
+ep  28/35 loss 0.010 train-acc 0.997 lr 4.118e-05 (135s)
+ep  29/35 loss 0.010 train-acc 0.997 lr 3.139e-05 (135s)
+ep  30/35 loss 0.011 train-acc 0.997 lr 2.292e-05 (135s)  test-video-acc 0.871
+ep  31/35 loss 0.008 train-acc 0.997 lr 1.586e-05 (135s)
+ep  32/35 loss 0.006 train-acc 0.999 lr 1.029e-05 (135s)
+ep  33/35 loss 0.004 train-acc 0.999 lr 6.257e-06 (135s)
+ep  34/35 loss 0.005 train-acc 0.999 lr 3.819e-06 (135s)
+ep  35/35 loss 0.005 train-acc 0.998 lr 3e-06 (135s)  test-video-acc 0.889
+[done] last-epoch test acc 0.889 (best 0.889) -> /content/drive/MyDrive/kca_full/ckpt/pstnet

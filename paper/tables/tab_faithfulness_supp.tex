@@ -1,0 +1,16 @@
+Random (floor) & 0.916{\scriptsize$\pm$0.14} & 0.003{\scriptsize$\pm$0.05} & 0.920{\scriptsize$\pm$0.14} & 0.041{\scriptsize$\pm$0.12} & 0.004{\scriptsize$\pm$0.17}\\
+Geometry-edge (floor) & 0.890{\scriptsize$\pm$0.19} & 0.011{\scriptsize$\pm$0.11} & 0.903{\scriptsize$\pm$0.16} & 0.103{\scriptsize$\pm$0.21} & 0.000{\scriptsize$\pm$0.17}\\
+Motion-prior (floor) & 0.505{\scriptsize$\pm$0.38} & 0.277{\scriptsize$\pm$0.33} & 0.860{\scriptsize$\pm$0.16} & 0.365{\scriptsize$\pm$0.22} & 0.000{\scriptsize$\pm$0.18}\\
+Grad$\times$Input & 0.655{\scriptsize$\pm$0.28} & 0.086{\scriptsize$\pm$0.18} & 0.722{\scriptsize$\pm$0.25} & 0.332{\scriptsize$\pm$0.28} & \underline{0.028{\scriptsize$\pm$0.23}}\\
+SmoothGrad~\cite{smilkov2017smoothgrad} & 0.772{\scriptsize$\pm$0.24} & 0.031{\scriptsize$\pm$0.12} & \underline{0.915{\scriptsize$\pm$0.14}} & \underline{0.083{\scriptsize$\pm$0.16}} & 0.006{\scriptsize$\pm$0.18}\\
+Integrated Grad.~\cite{sundararajan2017ig} & 0.282{\scriptsize$\pm$0.26} & 0.347{\scriptsize$\pm$0.24} & 0.862{\scriptsize$\pm$0.17} & 0.129{\scriptsize$\pm$0.19} & \textbf{0.046{\scriptsize$\pm$0.22}}\\
+3D Grad-CAM~\cite{selvaraju2017gradcam} & 0.713{\scriptsize$\pm$0.26} & 0.051{\scriptsize$\pm$0.12} & 0.554{\scriptsize$\pm$0.30} & 0.659{\scriptsize$\pm$0.30} & 0.000{\scriptsize$\pm$0.15}\\
+Region occlusion~\cite{zheng2019pointcloudsaliency} & \underline{0.233{\scriptsize$\pm$0.23}} & \underline{0.416{\scriptsize$\pm$0.23}} & 0.784{\scriptsize$\pm$0.17} & 0.531{\scriptsize$\pm$0.24} & 0.021{\scriptsize$\pm$0.16}\\
+OccAM~\cite{schinagl2022occam} & 0.853{\scriptsize$\pm$0.24} & 0.059{\scriptsize$\pm$0.13} & \textbf{0.953{\scriptsize$\pm$0.07}} & \textbf{$-$0.004{\scriptsize$\pm$0.11}} & 0.003{\scriptsize$\pm$0.17}\\
+Extremal Pert.~\cite{fong2019extremal} & 0.634{\scriptsize$\pm$0.22} & 0.052{\scriptsize$\pm$0.10} & 0.309{\scriptsize$\pm$0.26} & 0.830{\scriptsize$\pm$0.25} & 0.005{\scriptsize$\pm$0.17}\\
+Attn.\ Rollout~\cite{abnar2020rollout} & 0.649{\scriptsize$\pm$0.27} & 0.073{\scriptsize$\pm$0.15} & 0.769{\scriptsize$\pm$0.24} & 0.431{\scriptsize$\pm$0.26} & $-$0.009{\scriptsize$\pm$0.17}\\
+Transformer Attr.~\cite{chefer2021transformer} & 0.601{\scriptsize$\pm$0.28} & 0.100{\scriptsize$\pm$0.17} & 0.766{\scriptsize$\pm$0.24} & 0.424{\scriptsize$\pm$0.28} & 0.003{\scriptsize$\pm$0.17}\\
+Raw attention (last layer) & 0.542{\scriptsize$\pm$0.28} & 0.127{\scriptsize$\pm$0.16} & 0.688{\scriptsize$\pm$0.25} & 0.551{\scriptsize$\pm$0.29} & 0.006{\scriptsize$\pm$0.16}\\
+\midrule
+\textbf{\method} (local) & 0.256{\scriptsize$\pm$0.25} & 0.403{\scriptsize$\pm$0.24} & 0.793{\scriptsize$\pm$0.17} & 0.511{\scriptsize$\pm$0.23} & 0.018{\scriptsize$\pm$0.17}\\
+\textbf{\method} (context) & \textbf{0.179{\scriptsize$\pm$0.19}}$^\ast$ & \textbf{0.453{\scriptsize$\pm$0.21}}$^\ast$ & 0.761{\scriptsize$\pm$0.18} & 0.546{\scriptsize$\pm$0.24} & 0.011{\scriptsize$\pm$0.17}\\

@@ -1,0 +1,44 @@
+{
+  "alpha": 0.25,
+  "beta": 3.0,
+  "n_train": 163,
+  "n_test": 200,
+  "motion": {
+    "test_acc": 0.855,
+    "train_s": 502.42992091178894,
+    "kca": {
+      "arm_motion_share": 0.8133861416283923,
+      "arm_motion_share_signed": 0.8804956052502206,
+      "arm_smot": 59429.405097961426,
+      "arm_sgeo": 8065.997200012207,
+      "nec_ebpg_arm": 0.5196648266050033
+    },
+    "kca_ctx": {
+      "arm_motion_share": 0.9062952241518315,
+      "arm_motion_share_signed": 1.1011818015017878,
+      "arm_smot": 73455.68839263916,
+      "arm_sgeo": -6749.456694602966,
+      "nec_ebpg_arm": 0.4525045951108041
+    },
+    "motion_prior_ebpg_arm": 0.23213650994002819
+  },
+  "geometry": {
+    "test_acc": 0.9225,
+    "train_s": 494.3420829772949,
+    "kca": {
+      "arm_motion_share": 0.9488919421882166,
+      "arm_motion_share_signed": 0.30966634406211924,
+      "arm_smot": -3488.4540979862213,
+      "arm_sgeo": -7776.748481750488,
+      "nec_ebpg_arm": 0.0035666433148890063
+    },
+    "kca_ctx": {
+      "arm_motion_share": 0.8518107197021226,
+      "arm_motion_share_signed": 0.33703352601806746,
+      "arm_smot": -17336.93386077881,
+      "arm_sgeo": -34102.85631561279,
+      "nec_ebpg_arm": 0.005036670289518952
+    },
+    "motion_prior_ebpg_arm": 0.23213650994002819
+  }
+}

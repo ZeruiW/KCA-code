@@ -1,0 +1,23 @@
+{
+  "motion": {
+    "odd_motion_fraction_pooled": 0.3608896107303131,
+    "odd_motion_fraction_perclip": {
+      "mean": 0.3198271095752716,
+      "std": 0.23151665925979614,
+      "n": 150
+    },
+    "smot_on_odd_total": 43820.684631347656,
+    "sgeo_on_odd_total": 77603.3833618164
+  },
+  "shape": {
+    "odd_motion_fraction_pooled": 0.0056147093428427445,
+    "odd_motion_fraction_perclip": {
+      "mean": 0.01686622016131878,
+      "std": 0.0463612861931324,
+      "n": 137
+    },
+    "smot_on_odd_total": 2.86272856593132,
+    "sgeo_on_odd_total": 506.9995619058609
+  },
+  "dissociation_gap": 0.35527490138747037
+}

@@ -1,0 +1,32 @@
+
+== Faithfulness (motion task, 3 seeds x 20 clips) ==
+val acc: 1.000 +/- 0.000
+Deletion-AUC (lower better): random=0.91  geometry_edge=0.88  motion_prior=0.45  occam=0.90  kca=0.42
+Smot EBPG->moving: KCA 0.983 vs random 0.333
+KCA vs point_drop (vs_best_overall) deletion: p=3.36e-02
+KCA vs kca_ctx (vs_best_grad_attn) deletion: p=1.19e-02
+
+== Motion-vs-geometry double dissociation ==
+  cue=motion: motion-fraction WITHIN odd cluster (pooled) = 1.00 [Smot=32958 Sgeo=42] (high iff cue=motion)
+  cue=shape : motion-fraction WITHIN odd cluster (pooled) = 0.00 [Smot=0 Sgeo=5] (high iff cue=motion)
+  cue=motion_ctx: motion-fraction WITHIN odd cluster (pooled) = 1.00 [Smot=32956 Sgeo=42] (high iff cue=motion)
+  cue=shape_ctx: motion-fraction WITHIN odd cluster (pooled) = 0.00 [Smot=0 Sgeo=5] (high iff cue=motion)
+
+== Ablations (1 seed) ==
+  proxy_symmetric          motion_odd_motion_share=+0.999  deletion_auc=+0.428  motion_dint_over_nec=+0.018  shape_odd_motion_share=+0.000  shape_dint_over_nec=+0.000
+  proxy_motion_first       motion_odd_motion_share=+1.000  deletion_auc=+0.428  shape_odd_motion_share=+0.000
+  bg_symmetric             motion_odd_motion_share=+0.922  deletion_auc=+0.419  motion_dint_over_nec=+0.285  shape_odd_motion_share=+0.488  shape_dint_over_nec=+0.991
+  bg_motion_first          motion_odd_motion_share=+0.846  deletion_auc=+0.419  shape_odd_motion_share=+0.000
+  nn_symmetric             motion_odd_motion_share=+0.922  deletion_auc=+0.419  motion_dint_over_nec=+0.281  shape_odd_motion_share=+0.488  shape_dint_over_nec=+0.991
+  nn_motion_first          motion_odd_motion_share=+0.846  deletion_auc=+0.419  shape_odd_motion_share=+0.000
+
+== Soundness & amortized fidelity (1 seed) ==
+  Adebayo rank-corr (trained vs random weights) = +0.075 (->0 = sane)
+  Infidelity = 5313.341 | Max-Sensitivity = 0.101
+  Amortized fidelity rank-corr to exact = 0.675; Deletion exact 0.44 vs amortized 0.44
+
+== displace sign-sensitivity (motion-direction task) ==
+  acc 0.97 | displace-reverse necessity 3.21 vs freeze 1.13
+  flip-to-OPPOSITE: displace 0.90 vs freeze 0.00 (displace is sign-sensitive)
+
+[written] results/controlled/{faithfulness,crossover,ablations}.json, faithfulness.tex, CONCLUSIONS.md

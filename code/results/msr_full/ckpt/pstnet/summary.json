@@ -1,0 +1,36 @@
+{
+  "backbone": "pstnet",
+  "last_acc": 0.8885017421602788,
+  "best_acc": 0.8885017421602788,
+  "params_M": 8.258897,
+  "cfg": {},
+  "preproc": {
+    "center": true
+  },
+  "args": {
+    "backbone": "pstnet",
+    "data": "/content/kca/data/msr",
+    "out": "/content/drive/MyDrive/kca_full/ckpt/pstnet",
+    "repo": null,
+    "scale": "official",
+    "frames": 24,
+    "points": 2048,
+    "epochs": 35,
+    "bs": 16,
+    "opt": "adamw",
+    "lr": 0.0003,
+    "wd": 0.05,
+    "warmup": 5,
+    "milestones": [
+      0.6,
+      0.85
+    ],
+    "center": 1,
+    "t_init_scale": null,
+    "clips_per_video": 17,
+    "eval_every": 5,
+    "device": "cuda",
+    "seed": 0,
+    "resume": true
+  }
+}

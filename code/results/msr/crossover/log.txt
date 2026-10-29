@@ -1,0 +1,3 @@
+arm-moving clips: train 163 test 200
+[motion] acc 0.855 | KCA arm motion share 0.813 (ctx 0.906) | motion-prior EBPG(arm) 0.23
+[geometry] acc 0.922 | KCA arm motion share 0.391 (ctx 0.387) | motion-prior EBPG(arm) 0.23

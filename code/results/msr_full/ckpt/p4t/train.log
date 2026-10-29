@@ -1,0 +1,52 @@
+[p4transformer] device=cuda cfg={} params=44.14M train=270 test=297 T=24 N=2048
+ep   1/50 loss 1.896 train-acc 0.441 lr 6.221e-05 (48s)
+ep   2/50 loss 0.391 train-acc 0.882 lr 0.0001216 (48s)
+ep   3/50 loss 0.386 train-acc 0.875 lr 0.000181 (47s)
+ep   4/50 loss 0.252 train-acc 0.921 lr 0.0002404 (48s)
+ep   5/50 loss 0.269 train-acc 0.912 lr 0.0002998 (48s)  test-video-acc 0.596
+ep   6/50 loss 0.235 train-acc 0.927 lr 0.0002996 (48s)
+ep   7/50 loss 0.116 train-acc 0.962 lr 0.0002986 (48s)
+ep   8/50 loss 0.092 train-acc 0.972 lr 0.0002968 (48s)
+ep   9/50 loss 0.065 train-acc 0.982 lr 0.0002943 (48s)
+ep  10/50 loss 0.085 train-acc 0.972 lr 0.0002911 (48s)  test-video-acc 0.857
+ep  11/50 loss 0.097 train-acc 0.965 lr 0.0002872 (48s)
+ep  12/50 loss 0.100 train-acc 0.966 lr 0.0002826 (48s)
+ep  13/50 loss 0.028 train-acc 0.990 lr 0.0002775 (48s)
+ep  14/50 loss 0.044 train-acc 0.987 lr 0.0002717 (48s)
+ep  15/50 loss 0.024 train-acc 0.992 lr 0.0002653 (48s)  test-video-acc 0.868
+ep  16/50 loss 0.081 train-acc 0.975 lr 0.0002583 (48s)
+ep  17/50 loss 0.036 train-acc 0.989 lr 0.0002509 (48s)
+ep  18/50 loss 0.029 train-acc 0.992 lr 0.000243 (48s)
+ep  19/50 loss 0.030 train-acc 0.992 lr 0.0002346 (48s)
+ep  20/50 loss 0.036 train-acc 0.990 lr 0.0002258 (48s)  test-video-acc 0.871
+ep  21/50 loss 0.035 train-acc 0.986 lr 0.0002166 (48s)
+ep  22/50 loss 0.014 train-acc 0.995 lr 0.0002072 (48s)
+ep  23/50 loss 0.022 train-acc 0.993 lr 0.0001974 (48s)
+ep  24/50 loss 0.058 train-acc 0.984 lr 0.0001875 (48s)
+ep  25/50 loss 0.026 train-acc 0.992 lr 0.0001773 (48s)  test-video-acc 0.836
+ep  26/50 loss 0.017 train-acc 0.994 lr 0.0001671 (48s)
+ep  27/50 loss 0.008 train-acc 0.998 lr 0.0001567 (48s)
+ep  28/50 loss 0.000 train-acc 1.000 lr 0.0001464 (48s)
+ep  29/50 loss 0.000 train-acc 1.000 lr 0.000136 (48s)
+ep  30/50 loss 0.000 train-acc 1.000 lr 0.0001257 (48s)  test-video-acc 0.885
+ep  31/50 loss 0.003 train-acc 0.999 lr 0.0001156 (48s)
+ep  32/50 loss 0.025 train-acc 0.992 lr 0.0001056 (48s)
+ep  33/50 loss 0.008 train-acc 0.997 lr 9.59e-05 (48s)
+ep  34/50 loss 0.001 train-acc 1.000 lr 8.643e-05 (48s)
+ep  35/50 loss 0.000 train-acc 1.000 lr 7.728e-05 (48s)  test-video-acc 0.885
+ep  36/50 loss 0.000 train-acc 1.000 lr 6.849e-05 (48s)
+ep  37/50 loss 0.000 train-acc 1.000 lr 6.01e-05 (48s)
+ep  38/50 loss 0.000 train-acc 1.000 lr 5.216e-05 (48s)
+ep  39/50 loss 0.000 train-acc 1.000 lr 4.47e-05 (48s)
+ep  40/50 loss 0.000 train-acc 1.000 lr 3.776e-05 (48s)  test-video-acc 0.889
+ep  41/50 loss 0.000 train-acc 1.000 lr 3.138e-05 (48s)
+ep  42/50 loss 0.000 train-acc 1.000 lr 2.558e-05 (48s)
+ep  43/50 loss 0.000 train-acc 1.000 lr 2.04e-05 (48s)
+ep  44/50 loss 0.000 train-acc 1.000 lr 1.585e-05 (48s)
+ep  45/50 loss 0.000 train-acc 1.000 lr 1.197e-05 (48s)  test-video-acc 0.889
+ep  46/50 loss 0.000 train-acc 1.000 lr 8.762e-06 (48s)
+ep  47/50 loss 0.000 train-acc 1.000 lr 6.252e-06 (48s)
+ep  48/50 loss 0.000 train-acc 1.000 lr 4.45e-06 (48s)
+ep  49/50 loss 0.000 train-acc 1.000 lr 3.364e-06 (48s)
+ep  50/50 loss 0.000 train-acc 1.000 lr 3e-06 (48s)  test-video-acc 0.892
+[done] last-epoch test acc 0.892 (best 0.892) -> /content/drive/MyDrive/kca_full/ckpt/p4t

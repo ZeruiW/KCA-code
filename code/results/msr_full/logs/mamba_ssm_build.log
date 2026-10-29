@@ -1,0 +1,11 @@
+Collecting mamba-ssm
+  Downloading mamba_ssm-2.3.2.post1.tar.gz (216 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 216.4/216.4 kB 8.1 MB/s eta 0:00:00
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: mamba-ssm
+  Building wheel for mamba-ssm (pyproject.toml): started
+  Building wheel for mamba-ssm (pyproject.toml): finished with status 'done'
+  Created wheel for mamba-ssm: filename=mamba_ssm-2.3.2.post1-cp313-cp313-linux_x86_64.whl size=349376262 sha256=7fbb797c09736a6d7709e48e40f46206099101b14a976ed18a1943e68a175a3f
+  Stored in directory: /root/.cache/pip/wheels/7f/68/c4/588f5c6c8950032840738453efc028cde9be35603c72d662ca
+Successfully built mamba-ssm

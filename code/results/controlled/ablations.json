@@ -1,0 +1,62 @@
+{
+  "proxy_symmetric": {
+    "motion_odd_motion_share": 0.9990237016091121,
+    "deletion_auc": {
+      "mean": 0.4283830523490906,
+      "std": 0.1778377890586853,
+      "n": 20
+    },
+    "motion_dint_over_nec": 0.017950467804318315,
+    "shape_odd_motion_share": 0.0,
+    "shape_dint_over_nec": 0.0
+  },
+  "proxy_motion_first": {
+    "motion_odd_motion_share": 0.999952459723718,
+    "deletion_auc": {
+      "mean": 0.4283830523490906,
+      "std": 0.1778377890586853,
+      "n": 20
+    },
+    "shape_odd_motion_share": 0.0
+  },
+  "bg_symmetric": {
+    "motion_odd_motion_share": 0.9221688644366443,
+    "deletion_auc": {
+      "mean": 0.4191668927669525,
+      "std": 0.14400175213813782,
+      "n": 20
+    },
+    "motion_dint_over_nec": 0.2852829890635421,
+    "shape_odd_motion_share": 0.48824399784070144,
+    "shape_dint_over_nec": 0.9913958057572099
+  },
+  "bg_motion_first": {
+    "motion_odd_motion_share": 0.8461564600584237,
+    "deletion_auc": {
+      "mean": 0.4191668927669525,
+      "std": 0.14400175213813782,
+      "n": 20
+    },
+    "shape_odd_motion_share": 0.0
+  },
+  "nn_symmetric": {
+    "motion_odd_motion_share": 0.9220907874095903,
+    "deletion_auc": {
+      "mean": 0.4191668927669525,
+      "std": 0.14400175213813782,
+      "n": 20
+    },
+    "motion_dint_over_nec": 0.28084118083693405,
+    "shape_odd_motion_share": 0.48824323329813973,
+    "shape_dint_over_nec": 0.9913642799725795
+  },
+  "nn_motion_first": {
+    "motion_odd_motion_share": 0.846466630727653,
+    "deletion_auc": {
+      "mean": 0.4191668927669525,
+      "std": 0.14400175213813782,
+      "n": 20
+    },
+    "shape_odd_motion_share": 0.0
+  }
+}

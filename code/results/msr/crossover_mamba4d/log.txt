@@ -1,0 +1,14 @@
+train start 22:23
+arm-moving clips: train 163 test 200
+/Users/z/kca_work/venv/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[motion] trained: test acc 0.860 (1324s)
+[geometry] trained: test acc 0.973 (1324s)
+train exit 0 23:07
+arm-moving clips: train 163 test 200
+/Users/z/kca_work/venv/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[motion] acc 0.860 | KCA arm motion share 0.894 (ctx 0.894) | motion-prior EBPG(arm) 0.23
+[geometry] acc 0.973 | KCA arm motion share 0.545 (ctx 0.543) | motion-prior EBPG(arm) 0.23
+eval exit 0 23:44
+XOVER_DONE

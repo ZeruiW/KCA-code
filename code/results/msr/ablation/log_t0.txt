@@ -1,0 +1,2 @@
+local_m12_t0mid {'deletion_auc': 0.255, 'insertion_auc': 0.798, 'smot_ebpg': 0.606, 'smot_pg': 0.6, 'dint_over_nec': 0.61, 'time_s': 3.121, 'n_forward': 37.0, 'motion_share_moving': 0.716}
+ctx_m12_t0mid {'deletion_auc': 0.157, 'insertion_auc': 0.784, 'smot_ebpg': 0.592, 'smot_pg': 0.625, 'dint_over_nec': 0.548, 'time_s': 21.149, 'n_forward': 257.0, 'motion_share_moving': 0.738}
